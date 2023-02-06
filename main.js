@@ -22,7 +22,7 @@ const presets = [
         num_points: 500,
         trail_length: 5,
         color_scheme: 0,
-        connect_trail: false,
+        connect_trail: "false"
     },
     {
         x_func: "t^2 - x*y + t",
@@ -38,7 +38,7 @@ const presets = [
         num_points: 500,
         trail_length: 5,
         color_scheme: 0,
-        connect_trail: false,
+        connect_trail: "false"
     }, 
     {
         x_func: "x^2 - x*t + y*t - x",
@@ -54,36 +54,56 @@ const presets = [
         num_points: 1000,
         trail_length: 5,
         color_scheme: 0,
-        connect_trail: false,
+        connect_trail: "false"
     },
 ]
 
-function displayRandom() {
-    // choose random preset
-    let chosenPreset = presets[Math.floor(Math.random() * presets.length)]; 
+document.getElementById("randomPreset").addEventListener("click", () => {
+    let preset = presets[Math.floor(Math.random() * presets.length)];
+    document.getElementById("x_func_input").value = preset.x_func;
+    document.getElementById("y_func_input").value = preset.y_func;
+    document.getElementById("x_scale_input").value = preset.x_scale;
+    document.getElementById("y_scale_input").value = preset.y_scale;
+    document.getElementById("x_offset_input").value = preset.x_offset;
+    document.getElementById("y_offset_input").value = preset.y_offset;
+    document.getElementById("point_size_input").value = preset.point_size;
+    document.getElementById("num_points_input").value = preset.num_points;
+    document.getElementById("t_initial_input").value = preset.t_initial;
+    document.getElementById("t_final_input").value = preset.t_final;
+    document.getElementById("t_rate_input").value = preset.t_rate;
+    document.getElementById("trail_length_input").value = preset.trail_length;
+    document.getElementById("color_scheme_input").value = preset.color_scheme;
+    document.getElementById("connect_trail_input").value = preset.connect_trail;
+});
 
-    // get values from chosen random preset
-    let x_func_raw = chosenPreset.x_func;
-    let y_func_raw = chosenPreset.y_func;
-    let x_scale = chosenPreset.x_scale;
-    let y_scale = chosenPreset.y_scale;
-    let x_offset = chosenPreset.x_offset;
-    let y_offset = chosenPreset.y_offset;
-    let point_size = chosenPreset.point_size;
-    let num_points = chosenPreset.num_points;
-    let t_initial = chosenPreset.t_initial;
-    let t_final = chosenPreset.t_final;
-    let t_rate = chosenPreset.t_rate;
-    let trailLength = chosenPreset.trail_length;
-    let color_scheme = chosenPreset.color_scheme;
-    let connect_trail = chosenPreset.connect_trail;
+
+
+// event listener for "begin"
+document.getElementById("begin").addEventListener("click", function() {
+    // get values from input fields
+    let x_func_raw = document.getElementById("x_func_input").value;
+    let y_func_raw = document.getElementById("y_func_input").value;
+    let x_scale = parseInt(document.getElementById("x_scale_input").value);
+    let y_scale = parseInt(document.getElementById("y_scale_input").value);
+    let x_offset = parseInt(document.getElementById("x_offset_input").value);
+    let y_offset = parseInt(document.getElementById("y_offset_input").value);
+    let point_size = parseInt(document.getElementById("point_size_input").value);
+    let num_points = parseInt(document.getElementById("num_points_input").value);
+    let t_initial = parseInt(document.getElementById("t_initial_input").value);
+    let t_final = parseInt(document.getElementById("t_final_input").value);
+    let t_rate = parseInt(document.getElementById("t_rate_input").value);
+    let trail_length = parseInt(document.getElementById("trail_length_input").value);
+    let color_scheme = parseInt(document.getElementById("color_scheme_input").value);
+    let connect_trail = document.getElementById("connect_trail_input").value;
+
+    console.log(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, num_points, t_initial, t_final, t_rate, trail_length, color_scheme, connect_trail)
 
     // display
-    display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, num_points, t_initial, t_final, t_rate, trailLength, color_scheme, connect_trail);
-}
+    display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, num_points, t_initial, t_final, t_rate, trail_length, color_scheme, connect_trail);
+});
 
 let running = false;
-function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, num_points, t_initial, t_final, t_rate, trailLength, color_scheme, connect_trail) {
+function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, num_points, t_initial, t_final, t_rate, trail_length, color_scheme, connect_trail) {
     running = true;
 
     // write x_func and y_func on document
@@ -130,8 +150,8 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
             running = false;
         }
 
-        // create constantly updating array of time instances, for the trail (length = trailLength)
-        if (currentlyDisplayed.length < trailLength) {
+        // create constantly updating array of time instances, for the trail (length = trail_length)
+        if (currentlyDisplayed.length < trail_length) {
             currentlyDisplayed.unshift(make2DArray(t, num_points));
         } else {
             currentlyDisplayed.unshift(make2DArray(t, num_points));
@@ -141,7 +161,7 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
         // clear canvas
         ctx.clearRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         
-        if (!connect_trail) { // draws points alone
+        if (connect_trail == "false") { // draws points alone
             for (let i = 0; i < currentlyDisplayed.length; i++) {
                 for (let j = 0; j < currentlyDisplayed[i].length; j++) {
                     ctx.fillStyle = toColor(j, color_scheme);
