@@ -53,7 +53,7 @@ const presets = [
         t_rate: 0.0002,
         num_points: 1000,
         trail_length: 5,
-        color_scheme: 0,
+        color_scheme: 5,
         connect_trail: "false"
     },
     {
@@ -103,7 +103,103 @@ const presets = [
         trail_length: 5,
         color_scheme: 0,
         connect_trail: "false"
-    }
+    },
+    {
+        x_func: "y*t + t^2 - y - y^2 + x*t - t^2",
+        y_func: "x^2 - x + y - t",
+        x_scale: 300,
+        y_scale: 300,
+        x_offset: 0,
+        y_offset: 0,
+        point_size: 1,
+        t_initial: -0.1,
+        t_final: 0.23,
+        t_rate: 0.0002,
+        num_points: 600,
+        trail_length: 9,
+        color_scheme: 6,
+        connect_trail: "false"
+    },
+    {
+        x_func: "y*t + t^2 - y - y^2 + x*t - t^2",
+        y_func: "x^2 - x + y - t",
+        x_scale: 300,
+        y_scale: 300,
+        x_offset: 0,
+        y_offset: 0,
+        point_size: 1,
+        t_initial: -0.1,
+        t_final: 0.23,
+        t_rate: 0.0002,
+        num_points: 600,
+        trail_length: 9,
+        color_scheme: 6,
+        connect_trail: "false"
+    },
+    {
+        x_func: "-t^2 - y^2 - x*y - x*t - y*t - x - t",
+        y_func: "t^2 - x*t -y",
+        x_scale: 400,
+        y_scale: 400,
+        x_offset: 0,
+        y_offset: 0,
+        point_size: 1,
+        t_initial: -0.3,
+        t_final: 0.3,
+        t_rate: 0.0005,
+        num_points: 800,
+        trail_length: 10,
+        color_scheme: 0,
+        connect_trail: "false"
+    },
+    {
+        x_func: "x^2 + y^2 - x*y + y*t - x - t",
+        y_func: "-t^2 - y^2 - x*y - x*t + y + t",
+        x_scale: 600,
+        y_scale: 600,
+        x_offset: 50,
+        y_offset: 50,
+        point_size: 3,
+        t_initial: -0.02,
+        t_final: 0.8,
+        t_rate: 0.0005,
+        num_points: 500,
+        trail_length: 10,
+        color_scheme: 2,
+        connect_trail: "false"
+    },
+    {
+        x_func: "x*y*t - x^2 - y - t^2",
+        y_func: "x*y*t + x + y^2 + t",
+        x_scale: 600,
+        y_scale: 600,
+        x_offset: -100,
+        y_offset: -70,
+        point_size: 1,
+        t_initial: -0.8,
+        t_final: 0.35,
+        t_rate: 0.0004,
+        num_points: 500,
+        trail_length: 10,
+        color_scheme: 0,
+        connect_trail: "false"
+    },
+    {
+        x_func: "t^2 + x*y + x^2 - 2y^2 - x*t + y",
+        y_func: "x^2 + y - t^2 + x*y",
+        x_scale: 500,
+        y_scale: 500,
+        x_offset: 0,
+        y_offset: 0,
+        point_size: 1,
+        t_initial: -0.55,
+        t_final: 0.7,
+        t_rate: 0.0006,
+        num_points: 600,
+        trail_length: 15,
+        color_scheme: 0,
+        connect_trail: "false"
+    },
 ]
 
 let running = false;
@@ -175,8 +271,8 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
         } else { // connects trail with bezier curve
             let grouped = crossArray(currentlyDisplayed);
             for (let i = 0; i < grouped.length; i++) {
-            ctx.strokeStyle = toColor(i, color_scheme);
-            bezierCurveThrough(ctx, grouped[i].map((point) => [point[0] * x_scale - x_offset, point[1] * y_scale +-y_offset]), 0.25);
+                ctx.strokeStyle = toColor(i, color_scheme);
+                bezierCurveThrough(ctx, grouped[i].map((point) => [point[0] * x_scale - x_offset, point[1] * y_scale +-y_offset]));
             } 
         }
 
@@ -214,20 +310,22 @@ function toColor(num, scheme) {
         g += 100;
         b += 100;
     }
-    
-    // return color based on scheme
-    if (scheme == 0) {return "rgb(" + r + ", " + g + ", " + b + ")";} // rainbow
-    else if (scheme == 1) {return "rgb(" + r + ", " + 255 + ", " + 255 + ")";} // cyan
-    else if (scheme == 2) {return "rgb(" + r + ", " + 0 + ", " + 255 + ")";} // blue-purple-pink
-    else if (scheme == 3) {return "rgb(" + r + ", " + 255 + ", " + 0 + ")";} // green-yellow
-    else if (scheme == 4) {return "rgb(" + 255 + ", " + g + ", " + 255 + ")";} // magenta
-    else if (scheme == 5) {return "rgb(" + 0 + ", " + g + ", " + 255 + ")";} // blue-cyan
-    else if (scheme == 6) {return "rgb(" + 255 + ", " + g + ", " + 0 + ")";} // red-orange-yellow
-    else if (scheme == 7) {return "rgb(" + 255 + ", " + 255 + ", " + b + ")";} // yellow
-    else if (scheme == 8) {return "rgb(" + 255 + ", " + 0 + ", " + b + ")";} // red-magenta
-    else if (scheme == 9) {return "rgb(" + 0 + ", " + 255 + ", " + b + ")";} // green-cyan
-    else if (scheme == 10) {return "rgb(" + 255 + ", " + 255 + ", " + 255 + ")";} // white
-    else if (scheme == 11) {return "rgb(" + 20 + ", " + 20 + ", " + 20 + ")";} // black
+
+    switch (scheme) {
+        case 0: return "rgb(" + r + ", " + g + ", " + b + ")"; // rainbow
+        case 1: return "rgb(" + r + ", " + 255 + ", " + 255 + ")"; // cyan
+        case 2: return "rgb(" + r + ", " + 0 + ", " + 255 + ")"; // blue-purple-pink
+        case 3: return "rgb(" + r + ", " + 255 + ", " + 0 + ")"; // green-yellow
+        case 4: return "rgb(" + 255 + ", " + g + ", " + 255 + ")"; // magenta
+        case 5: return "rgb(" + 0 + ", " + g + ", " + 255 + ")"; // blue-cyan
+        case 6: return "rgb(" + 255 + ", " + g + ", " + 0 + ")"; // red-orange-yellow
+        case 7: return "rgb(" + 255 + ", " + 255 + ", " + b + ")"; // yellow
+        case 8: return "rgb(" + 255 + ", " + 0 + ", " + b + ")"; // red-magenta
+        case 9: return "rgb(" + 0 + ", " + 255 + ", " + b + ")"; // green-cyan
+        case 10: return "rgb(" + 255 + ", " + 255 + ", " + 255 + ")"; // white
+        case 11: return "rgb(" + 40 + ", " + 40 + ", " + 40 + ")"; // black
+        default: return "rgb(" + r + ", " + g + ", " + b + ")";
+    }
 }
 
 // function to round to specified decimals
