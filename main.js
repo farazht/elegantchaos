@@ -25,22 +25,6 @@ const presets = [
         connect_trail: "false"
     },
     {
-        x_func: "t^2 - x*y + t",
-        y_func: "-x*y + x*t + y + t",
-        x_scale: 300,
-        y_scale: 300,
-        x_offset: -100,
-        y_offset: 200,
-        point_size: 2,
-        t_initial: 0,
-        t_final: 0.6,
-        t_rate: 0.0002,
-        num_points: 500,
-        trail_length: 5,
-        color_scheme: 0,
-        connect_trail: "false"
-    }, 
-    {
         x_func: "x^2 - x*t + y*t - x",
         y_func: "-y^2 - t^2 - x*y - x*t - y*t - y",
         x_scale: 400,
@@ -198,6 +182,38 @@ const presets = [
         num_points: 600,
         trail_length: 15,
         color_scheme: 0,
+        connect_trail: "false"
+    },
+    {
+        x_func: "2(x*y) - x*t + x - t - t^2 + x^2 - x*t",
+        y_func: "- x^2 - t^2 - x*y + y - y*t + 2t",
+        x_scale: 400,
+        y_scale: 400,
+        x_offset: -350,
+        y_offset: 150,
+        point_size: 1,
+        t_initial: 0.6,
+        t_final: 1.02,
+        t_rate: 0.0001,
+        num_points: 700,
+        trail_length: 7,
+        color_scheme: 0,
+        connect_trail: "false"
+    },
+    {
+        x_func: "x^2 - x + y - t - x*t + y^2",
+        y_func: "-x*y - x^2 + 2(x*t) + t + x - t^2",
+        x_scale: 500,
+        y_scale: 500,
+        x_offset: 250,
+        y_offset: 0,
+        point_size: 2,
+        t_initial: -0.1,
+        t_final: 0.3,
+        t_rate: 0.0002,
+        num_points: 500,
+        trail_length: 5,
+        color_scheme: 10,
         connect_trail: "false"
     },
 ]
