@@ -56,54 +56,58 @@ const presets = [
         color_scheme: 0,
         connect_trail: "false"
     },
+    {
+        x_func: "-x^2 + y^2 + t^2 - x*y + y*t - t",
+        y_func: "y^2 - x + t",
+        x_scale: 450,
+        y_scale: 450,
+        x_offset: 0,
+        y_offset: 0,
+        point_size: 1,
+        t_initial: -0.16,
+        t_final: -0.11,
+        t_rate: 0.00002,
+        num_points: 400,
+        trail_length: 10,
+        color_scheme: 0,
+        connect_trail: "false"
+    },
+    {
+        x_func: "x^2 + y^2 - x*y + y*t - t",
+        y_func: "y^2 - x + t",
+        x_scale: 450,
+        y_scale: 450,
+        x_offset: 50,
+        y_offset: 100,
+        point_size: 1,
+        t_initial: 0,
+        t_final: 0.48,
+        t_rate: 0.0002,
+        num_points: 500,
+        trail_length: 8,
+        color_scheme: 0,
+        connect_trail: "false"
+    }, 
+    {
+        x_func: "x^2 + t^2 + y^2 - x*t - x + y",
+        y_func: "x^2 + x*t + y + t",
+        x_scale: 350,
+        y_scale: 350,
+        x_offset: 0,
+        y_offset: -250,
+        point_size: 1,
+        t_initial: -0.4,
+        t_final: 0.1,
+        t_rate: 0.0003,
+        num_points: 500,
+        trail_length: 5,
+        color_scheme: 0,
+        connect_trail: "false"
+    }
 ]
 
-document.getElementById("randomPreset").addEventListener("click", () => {
-    let preset = presets[Math.floor(Math.random() * presets.length)];
-    document.getElementById("x_func_input").value = preset.x_func;
-    document.getElementById("y_func_input").value = preset.y_func;
-    document.getElementById("x_scale_input").value = preset.x_scale;
-    document.getElementById("y_scale_input").value = preset.y_scale;
-    document.getElementById("x_offset_input").value = preset.x_offset;
-    document.getElementById("y_offset_input").value = preset.y_offset;
-    document.getElementById("point_size_input").value = preset.point_size;
-    document.getElementById("num_points_input").value = preset.num_points;
-    document.getElementById("t_initial_input").value = preset.t_initial;
-    document.getElementById("t_final_input").value = preset.t_final;
-    document.getElementById("t_rate_input").value = preset.t_rate;
-    document.getElementById("trail_length_input").value = preset.trail_length;
-    document.getElementById("color_scheme_input").value = preset.color_scheme;
-    document.getElementById("connect_trail_input").value = preset.connect_trail;
-});
-
-
-
-// event listener for "begin"
-document.getElementById("begin").addEventListener("click", function() {
-    // get values from input fields
-    let x_func_raw = document.getElementById("x_func_input").value;
-    let y_func_raw = document.getElementById("y_func_input").value;
-    let x_scale = parseInt(document.getElementById("x_scale_input").value);
-    let y_scale = parseInt(document.getElementById("y_scale_input").value);
-    let x_offset = parseInt(document.getElementById("x_offset_input").value);
-    let y_offset = parseInt(document.getElementById("y_offset_input").value);
-    let point_size = parseInt(document.getElementById("point_size_input").value);
-    let num_points = parseInt(document.getElementById("num_points_input").value);
-    let t_initial = parseInt(document.getElementById("t_initial_input").value);
-    let t_final = parseInt(document.getElementById("t_final_input").value);
-    let t_rate = parseInt(document.getElementById("t_rate_input").value);
-    let trail_length = parseInt(document.getElementById("trail_length_input").value);
-    let color_scheme = parseInt(document.getElementById("color_scheme_input").value);
-    let connect_trail = document.getElementById("connect_trail_input").value;
-
-    console.log(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, num_points, t_initial, t_final, t_rate, trail_length, color_scheme, connect_trail)
-
-    // display
-    display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, num_points, t_initial, t_final, t_rate, trail_length, color_scheme, connect_trail);
-});
-
 let running = false;
-function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, num_points, t_initial, t_final, t_rate, trail_length, color_scheme, connect_trail) {
+function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail) {
     running = true;
 
     // write x_func and y_func on document
@@ -143,7 +147,7 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
 
     // main loop
     let currentlyDisplayed = [];
-    let mainLoop = setInterval(() => {
+    window.mainLoop = setInterval(() => {
         // stop loop if t_final is reached
         if (t >= t_final) {
             clearInterval(mainLoop);
@@ -230,3 +234,48 @@ function toColor(num, scheme) {
 function customRound(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
+
+// event listeners
+document.getElementById("randomPreset").addEventListener("click", () => {
+    let preset = presets[Math.floor(Math.random() * presets.length)];
+    document.getElementById("x_func_input").value = preset.x_func;
+    document.getElementById("y_func_input").value = preset.y_func;
+    document.getElementById("x_scale_input").value = preset.x_scale;
+    document.getElementById("y_scale_input").value = preset.y_scale;
+    document.getElementById("x_offset_input").value = preset.x_offset;
+    document.getElementById("y_offset_input").value = preset.y_offset;
+    document.getElementById("point_size_input").value = preset.point_size;
+    document.getElementById("t_initial_input").value = preset.t_initial;
+    document.getElementById("t_final_input").value = preset.t_final;
+    document.getElementById("t_rate_input").value = preset.t_rate;
+    document.getElementById("num_points_input").value = preset.num_points;
+    document.getElementById("trail_length_input").value = preset.trail_length;
+    document.getElementById("color_scheme_input").value = preset.color_scheme;
+    document.getElementById("connect_trail_input").value = preset.connect_trail;
+});
+document.getElementById("begin").addEventListener("click", function() {
+    if (running) return;
+
+    // get values from input fields
+    let x_func_raw = document.getElementById("x_func_input").value;
+    let y_func_raw = document.getElementById("y_func_input").value;
+    let x_scale = parseFloat(document.getElementById("x_scale_input").value);
+    let y_scale = parseFloat(document.getElementById("y_scale_input").value);
+    let x_offset = parseFloat(document.getElementById("x_offset_input").value);
+    let y_offset = parseFloat(document.getElementById("y_offset_input").value);
+    let point_size = parseFloat(document.getElementById("point_size_input").value);
+    let t_initial = parseFloat(document.getElementById("t_initial_input").value);
+    let t_final = parseFloat(document.getElementById("t_final_input").value);
+    let t_rate = parseFloat(document.getElementById("t_rate_input").value);
+    let num_points = parseFloat(document.getElementById("num_points_input").value);
+    let trail_length = parseFloat(document.getElementById("trail_length_input").value);
+    let color_scheme = parseFloat(document.getElementById("color_scheme_input").value);
+    let connect_trail = document.getElementById("connect_trail_input").value;
+
+    // display
+    display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail);
+});
+document.getElementById("stop").addEventListener("click", function() {
+    clearInterval(mainLoop);
+    running = false;
+});
