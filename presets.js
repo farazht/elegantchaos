@@ -303,6 +303,38 @@ const presets = [
         color_scheme: 0,
         connect_trail: "false"
     },
+    {
+        x_func: "-x*y*t - x^2 - y - t^2",
+        y_func: "-x*y*t + x + y^2 + t",
+        x_scale: 400,
+        y_scale: 400,
+        x_offset: -100,
+        y_offset: -100,
+        point_size: 1,
+        t_initial: -1.15,
+        t_final: 0.44,
+        t_rate: 0.0004,
+        num_points: 600,
+        trail_length: 5,
+        color_scheme: 0,
+        connect_trail: "false"
+    },
+    {
+        x_func: "x*t - y - y^2",
+        y_func: "x - 2y*t",
+        x_scale: 650,
+        y_scale: 650,
+        x_offset: 0,
+        y_offset: 0,
+        point_size: 5,
+        t_initial: -0.5,
+        t_final: 0.9,
+        t_rate: 0.0005,
+        num_points: 20,
+        trail_length: 100,
+        color_scheme: 8,
+        connect_trail: "true"
+    },
 ]
 
 window.presets = presets;

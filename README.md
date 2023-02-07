@@ -2,13 +2,13 @@
 
 ## Introduction
 
-*elegant**chaos*** is a browser application for visualizing chaotic mathematical systems. It was designed with simplicity and elegance in mind while allowing for a wide range of customization and interactivity.
+*elegant**chaos*** is a web-based tool for visualising chaotic mathematical systems. It was created with simplicity and elegance in mind, while also allowing for extensive customization and interactivity.
 
-This project was heavily inspired by [CodeParade's](https://www.youtube.com/@CodeParade) video on [Chaos Equations](https://www.youtube.com/watch?v=fDSIRXmnVvk), and uses the same mathematical methods for the most part.
+This project was heavily inspired by [CodeParade's](https://www.youtube.com/@CodeParade) video on [Chaos Equations](https://www.youtube.com/watch?v=fDSIRXmnVvk), and it employs many of the same mathematical methods.
 
 ## Usage
 
-Naturally, these chaos equations lead to infinity with only a small change in the initial conditions. As a result, finding inputs that produce interesting results can be difficult. The application provides a few tools to help with this.
+Naturally, these chaos equations lead to infinity with only a small change in the initial conditions. As a result, it can be difficult to find inputs that produce interesting outputs. The application provides a few tools to help with this.
 
 The following settings can be helpful for quickly evaluating the behavior of a system:
 - *x_func* and *y_func*: These functions are what determine the behavior. Try whatever you'd like, just base the function on the terms *x*, *y*, and *t*. The functions are evaluated using [math.js](https://mathjs.org/), so you can use any of the functions it provides.

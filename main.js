@@ -1,4 +1,7 @@
-// set up canvas
+// ===================
+// SETUP
+// ===================
+
 const screenWidth = screen.width, 
       screenHeight = screen.height,
       canvas = document.getElementById("canvas"),
@@ -11,11 +14,17 @@ ctx.translate(canvas.width / 2, canvas.height / 2);
 
 bottom.style.display = "none";
 let running = false;
+canvas.style.opacity = 0.5;
+
+// ===================
+// MAIN DISPLAY FUNCTION
+// ===================
 
 function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail) {
     running = true;
     bottom.style.display = "block";
     menu.style.display = "none";
+    canvas.style.opacity = 1.0;
 
     // write x_func and y_func on document
     document.getElementById("x_func").innerHTML = x_func_raw;
@@ -60,7 +69,8 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
             clearInterval(mainLoop);
             running = false;
             bottom.style.display = "none";
-            menu.style.display = "flex"
+            menu.style.display = "flex";
+            canvas.style.opacity = 0.5;
         }
 
         // create constantly updating array of time instances, for the trail (length = trail_length)
@@ -97,6 +107,10 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
         document.getElementById("t").innerHTML = customRound(t, 8);
     }, 10);
 }
+
+// ===================
+// HELPER FUNCTIONS
+// ===================
 
 // gets points with same index from each array in input array, returns array of arrays of points
 function crossArray(inputArray) {
@@ -147,6 +161,49 @@ function toColor(num, scheme) {
 // function to round to specified decimals
 function customRound(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
+// function to get an export code
+function getExport() {
+    let x_func_raw = document.getElementById("x_func_input").value;
+    let y_func_raw = document.getElementById("y_func_input").value;
+    let x_scale = parseFloat(document.getElementById("x_scale_input").value);
+    let y_scale = parseFloat(document.getElementById("y_scale_input").value);
+    let x_offset = parseFloat(document.getElementById("x_offset_input").value);
+    let y_offset = parseFloat(document.getElementById("y_offset_input").value);
+    let point_size = parseFloat(document.getElementById("point_size_input").value);
+    let t_initial = parseFloat(document.getElementById("t_initial_input").value);
+    let t_final = parseFloat(document.getElementById("t_final_input").value);
+    let t_rate = parseFloat(document.getElementById("t_rate_input").value);
+    let num_points = parseFloat(document.getElementById("num_points_input").value);
+    let trail_length = parseFloat(document.getElementById("trail_length_input").value);
+    let color_scheme = parseFloat(document.getElementById("color_scheme_input").value);
+    let connect_trail = document.getElementById("connect_trail_input").value;
+    
+    let export_raw = x_func_raw + ';' + y_func_raw + ';' + x_scale + ';' + y_scale + ';' + x_offset + ';' + y_offset + ';' + point_size + ';' + t_initial + ';' + t_final + ';' + t_rate + ';' + num_points + ';' + trail_length + ';' + color_scheme + ';' + connect_trail;
+    let export_encoded = btoa(export_raw);
+    return export_encoded;
+}
+
+// function to get a preset from an export code
+function getImport(export_encoded) {
+    let export_raw = atob(export_encoded);
+    let export_array = export_raw.split(';');
+
+    document.getElementById("x_func_input").value = export_array[0];
+    document.getElementById("y_func_input").value = export_array[1];
+    document.getElementById("x_scale_input").value = parseFloat(export_array[2]);
+    document.getElementById("y_scale_input").value = parseFloat(export_array[3]);
+    document.getElementById("x_offset_input").value = parseFloat(export_array[4]);
+    document.getElementById("y_offset_input").value = parseFloat(export_array[5]);
+    document.getElementById("point_size_input").value = parseFloat(export_array[6]);
+    document.getElementById("t_initial_input").value = parseFloat(export_array[7]);
+    document.getElementById("t_final_input").value = parseFloat(export_array[8]);
+    document.getElementById("t_rate_input").value = parseFloat(export_array[9]);
+    document.getElementById("num_points_input").value = parseFloat(export_array[10]);
+    document.getElementById("trail_length_input").value = parseFloat(export_array[11]);
+    document.getElementById("color_scheme_input").value = parseFloat(export_array[12]);
+    document.getElementById("connect_trail_input").value = export_array[13];
 }
 
 // ===================
@@ -229,6 +286,7 @@ document.getElementById("stop").addEventListener("click", function() {
     running = false;
     bottom.style.display = "none";
     menu.style.display = "flex";
+    canvas.style.opacity = 0.5;
 });
 
 document.addEventListener("keydown", function(e) {
@@ -238,6 +296,7 @@ document.addEventListener("keydown", function(e) {
             running = false;
             bottom.style.display = "none";
             menu.style.display = "flex"; 
+            canvas.style.opacity = 0.5;
         }
     }
 });
