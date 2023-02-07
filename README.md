@@ -4,7 +4,7 @@
 
 *elegant**chaos*** is a browser application for visualizing chaotic mathematical systems. It was designed with simplicity and elegance in mind while allowing for a wide range of customization and interactivity.
 
-This project was heavily inspired by [CodeParade's](https://www.youtube.com/@CodeParade) video on [Chaos Equations](https://www.youtube.com/watch?v=fDSIRXmnVvk), which used the same mathematical methods for the most part.
+This project was heavily inspired by [CodeParade's](https://www.youtube.com/@CodeParade) video on [Chaos Equations](https://www.youtube.com/watch?v=fDSIRXmnVvk), and uses the same mathematical methods for the most part.
 
 ## Usage
 

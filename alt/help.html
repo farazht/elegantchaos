@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>elegantchaos</title>
+
+    <link rel="stylesheet" href="style.css"> 
+</head>
+
+<body>
+    <a href="/app.html"><h1 id="elegant-chaos-" style="font-weight: 100;color: white; text-decoration: none;">elegant<strong>chaos</strong></h1></a>
+    <h2 id="introduction">Introduction</h2>
+    <p><em>elegant<strong>chaos</strong></em> is a browser application for visualizing chaotic mathematical systems. It
+        was designed with simplicity and elegance in mind while allowing for a wide range of customization and
+        interactivity.</p>
+    <p>This project was heavily inspired by <a href="https://www.youtube.com/@CodeParade">CodeParade&#39;s</a> video on
+        <a href="https://www.youtube.com/watch?v=fDSIRXmnVvk">Chaos Equations</a>, and uses the same mathematical
+        methods for the most part.</p>
+    <h2 id="usage">Usage</h2>
+    <p>Naturally, these chaos equations lead to infinity with only a small change in the initial conditions. As a
+        result, finding inputs that produce interesting results can be difficult. The application provides a few tools
+        to help with this.</p>
+    <p>The following settings can be helpful for quickly evaluating the behavior of a system:</p>
+    <ul>
+        <li><em>x_func</em> and <em>y_func</em>: These functions are what determine the behavior. Try whatever you&#39;d
+            like, just base the function on the terms <em>x</em>, <em>y</em>, and <em>t</em>. The functions are
+            evaluated using <a href="https://mathjs.org/">math.js</a>, so you can use any of the functions it provides.
+            <ul>
+                <li>e.g. <code>x^2 + y^2 - x*y + t</code></li>
+                <li>e.g. <code>t^2 - x^2 + x*t - y*t + t</code></li>
+                <li>e.g. <code>y*t - x</code></li>
+                <li>e.g. <code>y^2 + x*t - y*t - y + x</code></li>
+            </ul>
+        </li>
+        <li><em>x_scale</em>: 300-500</li>
+        <li><em>y_scale</em>: 300-500</li>
+        <li><em>x_offset</em>: 0</li>
+        <li><em>y_offset</em>: 0</li>
+        <li><em>point_size</em>: 1</li>
+        <li><em>t_initial</em>: -1</li>
+        <li><em>t_final</em>: 1</li>
+        <li><em>t_rate</em>: 0.001</li>
+        <li><em>num_points</em>: 500-1000</li>
+        <li><em>trail_length</em>: 5-10</li>
+        <li><em>color_scheme</em>: any</li>
+        <li><em>connect_trail</em>: false</li>
+    </ul>
+    <p>From there, if you see something interesting, you can easily adjust the scale and offset to fit it to your
+        screen, and adjust the <em>t</em> settings to get a better look at the behavior. </p>
+    <p>Remember, you can slow down time as much as you&#39;d like, and it will almost certainly still look cool.</p>
+    <h2 id="explanation">Explanation</h2>
+    <p>The program starts with just a single point, initialized at x = t_initial and y = t_initial. </p>
+    <blockquote>
+        <p>[x<sub>1</sub>, y<sub>1</sub>]</p>
+    </blockquote>
+    <p>Then, this point is passed through the functions <em>x_func</em> and <em>y_func</em> to produce a new point. </p>
+    <blockquote>
+        <p>[x<sub>2</sub>, y<sub>2</sub>] = [x_func(x<sub>1</sub>), y_func(y<sub>1</sub>)]</p>
+    </blockquote>
+    <p>This is repeated for <em>num_points</em> iterations, and a 2d array is produced. In the code, this is called a
+        <em>timeInstance</em> — partly because it represents all points at a single point in time, and partly because it
+        sounded cool.</p>
+    <blockquote>
+        <p>timeInstance = [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>,
+            y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]]</p>
+    </blockquote>
+    <p>This process is repeated for every <em>t</em> value between <em>t_initial</em> and <em>t_final</em>, with a step
+        size of <em>t_rate</em>. The currently visible <em>timeInstances</em> are stored in a rolling 3d array named
+        <em>currentTimeInstances</em>, fixed to a length of <em>trail_length</em>.</p>
+    <blockquote>
+        <p>currentTimeInstances = [</p>
+        <p>[[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ...,
+            [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial)</p>
+        <p>[[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ...,
+            [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial + t_rate)</p>
+        <p>[[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ...,
+            [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial + t_rate*2)</p>
+        <p>..., [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ...,
+            [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_final)</p>
+        <p>]</p>
+    </blockquote>
+    <p>Next, all other settings are applied. The points are grouped by their index in their respective
+        <em>timeInstance</em>. These groups of points represent points in the same trail — they move in the same path,
+        and will generally remain in close proximity.</p>
+    <blockquote>
+        <p>currentTimeInstances = [</p>
+        <p>[<strong>[x<sub>1</sub>, y<sub>1</sub>]</strong>, [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>,
+            y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial)</p>
+        <p>[<strong>[x<sub>1</sub>, y<sub>1</sub>]</strong>, [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>,
+            y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial + t_rate)</p>
+        <p>[<strong>[x<sub>1</sub>, y<sub>1</sub>]</strong>, [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>,
+            y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial + t_rate*2)</p>
+        <p>..., [<strong>[x<sub>1</sub>, y<sub>1</sub>]</strong>, [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>,
+            y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_final)</p>
+        <p>]</p>
+    </blockquote>
+    <p>The points bolded above will display in the same color. This is the same for every other index, and gives the
+        illusion of trails. If <em>connect_trail</em> is true, the points will be connected by <a
+            href="https://github.com/dobarkod/canvas-bezier-multiple">bezier curves</a>.</p>
+    <p>Finally, the points are scaled, offset, and drawn to the screen.</p>
+</body>
+
+</html>

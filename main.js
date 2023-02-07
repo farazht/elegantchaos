@@ -229,11 +229,14 @@ document.getElementById("stop").addEventListener("click", function() {
     bottom.style.display = "none";
     menu.style.display = "flex";
 });
+
 document.addEventListener("keydown", function(e) {
-    if (running) {
-        clearInterval(mainLoop);
-        running = false;
-        bottom.style.display = "none";
-        menu.style.display = "flex"; 
+    if (e.keyCode == 27) {
+        if (running) {
+            clearInterval(mainLoop);
+            running = false;
+            bottom.style.display = "none";
+            menu.style.display = "flex"; 
+        }
     }
 });
