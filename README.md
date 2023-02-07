@@ -42,33 +42,37 @@ Then, this point is passed through the functions *x_func* and *y_func* to produc
 
 This is repeated for *num_points* iterations, and a 2d array is produced. In the code, this is called a *timeInstance* — partly because it represents all points at a single point in time, and partly because it sounded cool.
 
-> timeInstance = [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]]
+> timeInstance = [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]]
 
 This process is repeated for every *t* value between *t_initial* and *t_final*, with a step size of *t_rate*. The currently visible *timeInstances* are stored in a rolling 3d array named *currentTimeInstances*, fixed to a length of *trail_length*.
 
 > currentTimeInstances = [
 
-> [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_initial)
+> [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial)
 
-> [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_initial + t_rate)
+> [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial + t_rate)
 
-> [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_initial + t_rate*2)
+> [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial + t_rate*2)
 
-> ... ]
+> ..., [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_final)
+
+> ]
 
 Next, all other settings are applied. The points are grouped by their index in their respective *timeInstance*. These groups of points represent points in the same trail — they move in the same path, and will generally remain in close proximity.
 
 > currentTimeInstances = [
 
-> <mark>[[x<sub>1</sub>, y<sub>1</sub>]</mark>, [x<sub>2</sub>, y<sub>2</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_initial)
+> [**[x<sub>1</sub>, y<sub>1</sub>]**, [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial)
 
-> <mark>[[x<sub>1</sub>, y<sub>1</sub>]</mark>, [x<sub>2</sub>, y<sub>2</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_initial + t_rate)
+> [**[x<sub>1</sub>, y<sub>1</sub>]**, [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial + t_rate)
 
-> <mark>[[x<sub>1</sub>, y<sub>1</sub>]</mark>, [x<sub>2</sub>, y<sub>2</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_initial + t_rate*2)
+> [**[x<sub>1</sub>, y<sub>1</sub>]**, [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]], (at t_initial + t_rate*2)
 
-> ... ]
+> ..., [**[x<sub>1</sub>, y<sub>1</sub>]**, [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]] (at t_final)
 
-The points highlighted above will display in the same color. This is the same for every other index, and gives the illusion of a colored trail. If *connect_trail* is true, the points will be connected by [bezier curves](https://github.com/dobarkod/canvas-bezier-multiple).
+> ]
+
+The points bolded above will display in the same color. This is the same for every other index, and gives the illusion of trails. If *connect_trail* is true, the points will be connected by [bezier curves](https://github.com/dobarkod/canvas-bezier-multiple).
 
 Finally, the points are scaled, offset, and drawn to the screen.
 
