@@ -11,8 +11,11 @@ This project was heavily inspired by [CodeParade's](https://www.youtube.com/@Cod
 Naturally, these chaos equations lead to infinity with only a small change in the initial conditions. As a result, finding inputs that produce interesting results can be difficult. The application provides a few tools to help with this.
 
 The following settings can be helpful for quickly evaluating the behavior of a system:
-- *x_func*: This is what determines the behaviour. Try whatever you'd like.
-- *y_func*: This is what determines the behaviour. Try whatever you'd like.
+- *x_func* and *y_func*: These functions are what determine the behavior. Try whatever you'd like, just base the function on the terms *x*, *y*, and *t*. The functions are evaluated using [math.js](https://mathjs.org/), so you can use any of the functions it provides.
+    - e.g. `x^2 + y^2 - x*y + t`
+    - e.g. `t^2 - x^2 + x*t - y*t + t`
+    - e.g. `y*t - x`
+    - e.g. `y^2 + x*t - y*t - y + x`
 - *x_scale*: 300-500
 - *y_scale*: 300-500
 - *x_offset*: 0
