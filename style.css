@@ -1,3 +1,9 @@
+/* disable focus/selecting */
+input:focus, textarea:focus, select:focus, button:focus {
+    outline: none;
+}
+
+/* entire screen */
 html, body {
     overflow: hidden;
     background-color: black;
@@ -15,15 +21,12 @@ canvas {
     bottom: 0;
     left: 0;
 }
-input:focus {
-    outline: none;
-}
+
+/* menu and inputs */
 #menu {
     position: absolute;
-    top: 25;
-    right: 25;
-    bottom: 25;
-    left: 25;
+    top: 50;
+    left: 50;
 }
 .tooltip {
     visibility: hidden;
@@ -38,4 +41,25 @@ input:focus {
 }
 .text:hover .tooltip {
     visibility: visible;
+}
+
+/* bottom of screen */
+#stats {
+    position: absolute;
+    bottom: 1vh;
+    left: 1vw;
+    line-height: 0.5;
+    font-size: 0.8em;
+}
+#stop {
+    position: absolute;
+    bottom: 1vh;
+    right: 1vw;
+    width: 6vh;
+    height: 6vh;
+    background: url('assets/stop_button.svg');
+    background-size: contain;
+    border: none;
+    filter: invert();
+    cursor: pointer;
 }

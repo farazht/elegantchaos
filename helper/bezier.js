@@ -1,6 +1,6 @@
 // from https://github.com/dobarkod/canvas-bezier-multiple
 
-function bezierCurveThrough(ctx, points, tension) {
+function bezierCurveThrough(ctx, points, tension, width) {
     'use strict';
 
     // Default tension of one-quarter gives nice results
@@ -11,6 +11,7 @@ function bezierCurveThrough(ctx, points, tension) {
     // If we're given less than two points, there's nothing we can do
     if (l < 2) return;
 
+    ctx.lineWidth = width || 1;
     ctx.beginPath();
 
     // If we only have two points, we can only draw a straight line

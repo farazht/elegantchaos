@@ -2,225 +2,20 @@
 const screenWidth = screen.width, 
       screenHeight = screen.height,
       canvas = document.getElementById("canvas"),
-      ctx = canvas.getContext("2d");
+      ctx = canvas.getContext("2d"),
+      menu = document.getElementById("menu"),
+      bottom = document.getElementById("bottom");
 canvas.width = screenWidth;
 canvas.height = screenHeight;
 ctx.translate(canvas.width / 2, canvas.height / 2);
 
-const presets = [
-    {
-        x_func: "-x^2 - t^2 + x*t - y*t - x",
-        y_func: "-x^2 + t^2 + x*t - x - y",
-        x_scale: 200, 
-        y_scale: 200,
-        x_offset: -30,
-        y_offset: -75,
-        point_size: 1,
-        t_initial: -1,
-        t_final: 0.7,
-        t_rate: 0.0007,
-        num_points: 500,
-        trail_length: 5,
-        color_scheme: 0,
-        connect_trail: "false"
-    },
-    {
-        x_func: "x^2 - x*t + y*t - x",
-        y_func: "-y^2 - t^2 - x*y - x*t - y*t - y",
-        x_scale: 400,
-        y_scale: 400,
-        x_offset: 200,
-        y_offset: -150,
-        point_size: 1,
-        t_initial: 0.15,
-        t_final: 0.56,
-        t_rate: 0.0002,
-        num_points: 1000,
-        trail_length: 5,
-        color_scheme: 5,
-        connect_trail: "false"
-    },
-    {
-        x_func: "-x^2 + y^2 + t^2 - x*y + y*t - t",
-        y_func: "y^2 - x + t",
-        x_scale: 450,
-        y_scale: 450,
-        x_offset: 0,
-        y_offset: 0,
-        point_size: 1,
-        t_initial: -0.16,
-        t_final: -0.11,
-        t_rate: 0.00002,
-        num_points: 400,
-        trail_length: 10,
-        color_scheme: 0,
-        connect_trail: "false"
-    },
-    {
-        x_func: "x^2 + y^2 - x*y + y*t - t",
-        y_func: "y^2 - x + t",
-        x_scale: 450,
-        y_scale: 450,
-        x_offset: 50,
-        y_offset: 100,
-        point_size: 1,
-        t_initial: 0,
-        t_final: 0.48,
-        t_rate: 0.0002,
-        num_points: 500,
-        trail_length: 8,
-        color_scheme: 0,
-        connect_trail: "false"
-    }, 
-    {
-        x_func: "x^2 + t^2 + y^2 - x*t - x + y",
-        y_func: "x^2 + x*t + y + t",
-        x_scale: 350,
-        y_scale: 350,
-        x_offset: 0,
-        y_offset: -250,
-        point_size: 1,
-        t_initial: -0.4,
-        t_final: 0.1,
-        t_rate: 0.0003,
-        num_points: 500,
-        trail_length: 5,
-        color_scheme: 0,
-        connect_trail: "false"
-    },
-    {
-        x_func: "y*t + t^2 - y - y^2 + x*t - t^2",
-        y_func: "x^2 - x + y - t",
-        x_scale: 300,
-        y_scale: 300,
-        x_offset: 0,
-        y_offset: 0,
-        point_size: 1,
-        t_initial: -0.1,
-        t_final: 0.23,
-        t_rate: 0.0002,
-        num_points: 600,
-        trail_length: 9,
-        color_scheme: 6,
-        connect_trail: "false"
-    },
-    {
-        x_func: "y*t + t^2 - y - y^2 + x*t - t^2",
-        y_func: "x^2 - x + y - t",
-        x_scale: 300,
-        y_scale: 300,
-        x_offset: 0,
-        y_offset: 0,
-        point_size: 1,
-        t_initial: -0.1,
-        t_final: 0.23,
-        t_rate: 0.0002,
-        num_points: 600,
-        trail_length: 9,
-        color_scheme: 6,
-        connect_trail: "false"
-    },
-    {
-        x_func: "-t^2 - y^2 - x*y - x*t - y*t - x - t",
-        y_func: "t^2 - x*t -y",
-        x_scale: 400,
-        y_scale: 400,
-        x_offset: 0,
-        y_offset: 0,
-        point_size: 1,
-        t_initial: -0.3,
-        t_final: 0.3,
-        t_rate: 0.0005,
-        num_points: 800,
-        trail_length: 10,
-        color_scheme: 0,
-        connect_trail: "false"
-    },
-    {
-        x_func: "x^2 + y^2 - x*y + y*t - x - t",
-        y_func: "-t^2 - y^2 - x*y - x*t + y + t",
-        x_scale: 600,
-        y_scale: 600,
-        x_offset: 50,
-        y_offset: 50,
-        point_size: 3,
-        t_initial: -0.02,
-        t_final: 0.8,
-        t_rate: 0.0005,
-        num_points: 500,
-        trail_length: 10,
-        color_scheme: 2,
-        connect_trail: "false"
-    },
-    {
-        x_func: "x*y*t - x^2 - y - t^2",
-        y_func: "x*y*t + x + y^2 + t",
-        x_scale: 600,
-        y_scale: 600,
-        x_offset: -100,
-        y_offset: -70,
-        point_size: 1,
-        t_initial: -0.8,
-        t_final: 0.35,
-        t_rate: 0.0004,
-        num_points: 500,
-        trail_length: 10,
-        color_scheme: 0,
-        connect_trail: "false"
-    },
-    {
-        x_func: "t^2 + x*y + x^2 - 2y^2 - x*t + y",
-        y_func: "x^2 + y - t^2 + x*y",
-        x_scale: 500,
-        y_scale: 500,
-        x_offset: 0,
-        y_offset: 0,
-        point_size: 1,
-        t_initial: -0.55,
-        t_final: 0.7,
-        t_rate: 0.0006,
-        num_points: 600,
-        trail_length: 15,
-        color_scheme: 0,
-        connect_trail: "false"
-    },
-    {
-        x_func: "2(x*y) - x*t + x - t - t^2 + x^2 - x*t",
-        y_func: "- x^2 - t^2 - x*y + y - y*t + 2t",
-        x_scale: 400,
-        y_scale: 400,
-        x_offset: -350,
-        y_offset: 150,
-        point_size: 1,
-        t_initial: 0.6,
-        t_final: 1.02,
-        t_rate: 0.0001,
-        num_points: 700,
-        trail_length: 7,
-        color_scheme: 0,
-        connect_trail: "false"
-    },
-    {
-        x_func: "x^2 - x + y - t - x*t + y^2",
-        y_func: "-x*y - x^2 + 2(x*t) + t + x - t^2",
-        x_scale: 500,
-        y_scale: 500,
-        x_offset: 250,
-        y_offset: 0,
-        point_size: 2,
-        t_initial: -0.1,
-        t_final: 0.3,
-        t_rate: 0.0002,
-        num_points: 500,
-        trail_length: 5,
-        color_scheme: 10,
-        connect_trail: "false"
-    },
-]
-
+bottom.style.display = "none";
 let running = false;
+
 function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail) {
     running = true;
+    bottom.style.display = "block";
+    menu.style.display = "none";
 
     // write x_func and y_func on document
     document.getElementById("x_func").innerHTML = x_func_raw;
@@ -264,6 +59,8 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
         if (t >= t_final) {
             clearInterval(mainLoop);
             running = false;
+            bottom.style.display = "none";
+            menu.style.display = "block"
         }
 
         // create constantly updating array of time instances, for the trail (length = trail_length)
@@ -281,14 +78,17 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
             for (let i = 0; i < currentlyDisplayed.length; i++) {
                 for (let j = 0; j < currentlyDisplayed[i].length; j++) {
                     ctx.fillStyle = toColor(j, color_scheme);
-                    ctx.fillRect(currentlyDisplayed[i][j][0] * x_scale - x_offset, currentlyDisplayed[i][j][1] * y_scale - y_offset, point_size, point_size, );
+                    ctx.beginPath();
+                    ctx.arc(currentlyDisplayed[i][j][0] * x_scale - x_offset, currentlyDisplayed[i][j][1] * y_scale - y_offset, point_size, 0, 2 * Math.PI);
+                    ctx.fill();
+                    // ctx.fillRect(currentlyDisplayed[i][j][0] * x_scale - x_offset, currentlyDisplayed[i][j][1] * y_scale - y_offset, point_size, point_size, );
                 }
             }
         } else { // connects trail with bezier curve
             let grouped = crossArray(currentlyDisplayed);
             for (let i = 0; i < grouped.length; i++) {
                 ctx.strokeStyle = toColor(i, color_scheme);
-                bezierCurveThrough(ctx, grouped[i].map((point) => [point[0] * x_scale - x_offset, point[1] * y_scale +-y_offset]));
+                bezierCurveThrough(ctx, grouped[i].map((point) => [point[0] * x_scale - x_offset, point[1] * y_scale +-y_offset]), 0.25, point_size);
             } 
         }
 
@@ -339,7 +139,7 @@ function toColor(num, scheme) {
         case 8: return "rgb(" + 255 + ", " + 0 + ", " + b + ")"; // red-magenta
         case 9: return "rgb(" + 0 + ", " + 255 + ", " + b + ")"; // green-cyan
         case 10: return "rgb(" + 255 + ", " + 255 + ", " + 255 + ")"; // white
-        case 11: return "rgb(" + 40 + ", " + 40 + ", " + 40 + ")"; // black
+        case 11: return "rgb(" + 60 + ", " + 60 + ", " + 60 + ")"; // black
         default: return "rgb(" + r + ", " + g + ", " + b + ")";
     }
 }
@@ -351,7 +151,7 @@ function customRound(value, decimals) {
 
 // event listeners
 document.getElementById("randomPreset").addEventListener("click", () => {
-    let preset = presets[Math.floor(Math.random() * presets.length)];
+    let preset = window.presets[Math.floor(Math.random() * window.presets.length)];
     document.getElementById("x_func_input").value = preset.x_func;
     document.getElementById("y_func_input").value = preset.y_func;
     document.getElementById("x_scale_input").value = preset.x_scale;
@@ -367,6 +167,42 @@ document.getElementById("randomPreset").addEventListener("click", () => {
     document.getElementById("color_scheme_input").value = preset.color_scheme;
     document.getElementById("connect_trail_input").value = preset.connect_trail;
 });
+
+document.getElementById("random").addEventListener("click", () => {
+    let terms = ["x^2", "y^2", "t^2", "x", "y", "t", "x*t", "y*t", "x*y"],
+        connectors = [" + ", " - "],
+        random_x_func = "",
+        random_y_func = "",
+        x_length = Math.floor(Math.random() * 4) + 3,
+        y_length = Math.floor(Math.random() * 4) + 3;
+
+    for (let i = 0; i < x_length; i++) {
+        random_x_func += terms[Math.floor(Math.random() * terms.length)] + connectors[Math.floor(Math.random() * connectors.length)];
+    }
+
+    for (let i = 0; i < y_length; i++) {
+        random_y_func += terms[Math.floor(Math.random() * terms.length)] + connectors[Math.floor(Math.random() * connectors.length)];
+    }
+
+    random_x_func += terms[Math.floor(Math.random() * terms.length)];
+    random_y_func += terms[Math.floor(Math.random() * terms.length)];
+
+    document.getElementById("x_func_input").value = random_x_func;
+    document.getElementById("y_func_input").value = random_y_func;
+    document.getElementById("x_scale_input").value = 400;
+    document.getElementById("y_scale_input").value = 400;
+    document.getElementById("x_offset_input").value = 0;
+    document.getElementById("y_offset_input").value = 0;
+    document.getElementById("point_size_input").value = 1;
+    document.getElementById("t_initial_input").value = -1;
+    document.getElementById("t_final_input").value = 1;
+    document.getElementById("t_rate_input").value = 0.001;
+    document.getElementById("num_points_input").value = 500;
+    document.getElementById("trail_length_input").value = 5;
+    document.getElementById("color_scheme_input").value = 0;
+    document.getElementById("connect_trail_input").value = "false";
+});
+
 document.getElementById("begin").addEventListener("click", function() {
     if (running) return;
 
@@ -392,4 +228,6 @@ document.getElementById("begin").addEventListener("click", function() {
 document.getElementById("stop").addEventListener("click", function() {
     clearInterval(mainLoop);
     running = false;
+    bottom.style.display = "none";
+    menu.style.display = "block"
 });
