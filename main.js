@@ -182,7 +182,7 @@ function getExport() {
     
     let export_raw = x_func_raw + ';' + y_func_raw + ';' + x_scale + ';' + y_scale + ';' + x_offset + ';' + y_offset + ';' + point_size + ';' + t_initial + ';' + t_final + ';' + t_rate + ';' + num_points + ';' + trail_length + ';' + color_scheme + ';' + connect_trail;
     let export_encoded = btoa(export_raw);
-    return export_encoded;
+    document.getElementById("code").value = export_encoded;
 }
 
 // function to get a preset from an export code
@@ -226,6 +226,8 @@ document.getElementById("randomPreset").addEventListener("click", () => {
     document.getElementById("trail_length_input").value = preset.trail_length;
     document.getElementById("color_scheme_input").value = preset.color_scheme;
     document.getElementById("connect_trail_input").value = preset.connect_trail;
+
+    getExport();
 });
 
 document.getElementById("randomX").addEventListener("click", () => {
@@ -241,6 +243,8 @@ document.getElementById("randomX").addEventListener("click", () => {
     random_x_func += terms[Math.floor(Math.random() * terms.length)];
 
     document.getElementById("x_func_input").value = random_x_func;
+
+    getExport();
 });
 
 document.getElementById("randomY").addEventListener("click", () => {
@@ -256,6 +260,8 @@ document.getElementById("randomY").addEventListener("click", () => {
     random_y_func += terms[Math.floor(Math.random() * terms.length)];
 
     document.getElementById("y_func_input").value = random_y_func;
+
+    getExport();
 });
 
 document.getElementById("begin").addEventListener("click", function() {
@@ -301,9 +307,25 @@ document.addEventListener("keydown", function(e) {
     }
 });
 
-// if any "input" element is changed, getExport() is called
-let inputs = document.getElementsByTagName("input");
-for (let i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("input", getExport);
-}
+// if any "inputBox" class element is changed, getExport() is called
+document.querySelectorAll(".inputBox").forEach(function(element) {
+    element.addEventListener("input", function() {
+        getExport();
+    });
+});
+
+// if "code" input is changed, getImport() is called with the content of "code"
+document.getElementById("code").addEventListener("input", function() {
+    if (document.getElementById("code").value === "") {
+        document.querySelectorAll(".inputBox").forEach(function(element) {
+            element.value = "";
+        });
+    } else {
+        getImport(document.getElementById("code").value);
+    }
+});
+
+
+
+
 

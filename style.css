@@ -149,6 +149,17 @@ canvas {
     margin: 0;
     border: none;
 }
+#code {
+    /* input box with only underline */
+    border: none;
+    border-bottom: 1px solid white;
+    background: none;
+    color: white;
+    font-size: 0.8em;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+}
 
 
 /* bottom of screen */
