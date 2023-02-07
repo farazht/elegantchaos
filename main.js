@@ -300,3 +300,10 @@ document.addEventListener("keydown", function(e) {
         }
     }
 });
+
+// if any "input" element is changed, getExport() is called
+let inputs = document.getElementsByTagName("input");
+for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("input", getExport);
+}
+
