@@ -176,7 +176,7 @@ const presets = [
         connect_trail: "false"
     },
     {
-        x_func: "2(x*y) - x*t + x - t - t^2 + x^2 - x*t",
+        x_func: "2x*y - x*t + x - t - t^2 + x^2 - x*t",
         y_func: "- x^2 - t^2 - x*y + y - y*t + 2t",
         x_scale: 400,
         y_scale: 400,
@@ -283,6 +283,22 @@ const presets = [
         t_final: 0.08,
         t_rate: 0.00005,
         num_points: 1000,
+        trail_length: 8,
+        color_scheme: 0,
+        connect_trail: "false"
+    },
+    {
+        x_func: "-x^2 - x*t + y*t - x",
+        y_func: "-y^2 - t^2 - x*y - x*t - y*t - y",
+        x_scale: 400,
+        y_scale: 400,
+        x_offset: -50,
+        y_offset: -100,
+        point_size: 1,
+        t_initial: -0.05,
+        t_final: 0.53,
+        t_rate: 0.0002,
+        num_points: 800,
         trail_length: 8,
         color_scheme: 0,
         connect_trail: "false"

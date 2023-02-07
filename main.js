@@ -36,7 +36,7 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
     }
 
     // make 2d array of n points at one time instance (t): [[x1, y1], [x2, y2], ...]
-    function make2DArray(t, n) {
+    function makeTimeInstance(t, n) {
         let output = [];
 
         // initialize position to [t, t]
@@ -53,7 +53,7 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
     }
 
     // main loop
-    let currentlyDisplayed = [];
+    let currentTimeInstances = [];
     window.mainLoop = setInterval(() => {
         // stop loop if t_final is reached
         if (t >= t_final) {
@@ -64,28 +64,28 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
         }
 
         // create constantly updating array of time instances, for the trail (length = trail_length)
-        if (currentlyDisplayed.length < trail_length) {
-            currentlyDisplayed.unshift(make2DArray(t, num_points));
+        if (currentTimeInstances.length < trail_length) {
+            currentTimeInstances.unshift(makeTimeInstance(t, num_points));
         } else {
-            currentlyDisplayed.unshift(make2DArray(t, num_points));
-            currentlyDisplayed.pop();
+            currentTimeInstances.unshift(makeTimeInstance(t, num_points));
+            currentTimeInstances.pop();
         }
 
         // clear canvas
         ctx.clearRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
         
         if (connect_trail == "false") { // draws points alone
-            for (let i = 0; i < currentlyDisplayed.length; i++) {
-                for (let j = 0; j < currentlyDisplayed[i].length; j++) {
+            for (let i = 0; i < currentTimeInstances.length; i++) {
+                for (let j = 0; j < currentTimeInstances[i].length; j++) {
                     ctx.fillStyle = toColor(j, color_scheme);
                     ctx.beginPath();
-                    ctx.arc(currentlyDisplayed[i][j][0] * x_scale - x_offset, currentlyDisplayed[i][j][1] * y_scale - y_offset, point_size, 0, 2 * Math.PI);
+                    ctx.arc(currentTimeInstances[i][j][0] * x_scale - x_offset, currentTimeInstances[i][j][1] * y_scale - y_offset, point_size, 0, 2 * Math.PI);
                     ctx.fill();
                     // ctx.fillRect(currentlyDisplayed[i][j][0] * x_scale - x_offset, currentlyDisplayed[i][j][1] * y_scale - y_offset, point_size, point_size, );
                 }
             }
         } else { // connects trail with bezier curve
-            let grouped = crossArray(currentlyDisplayed);
+            let grouped = crossArray(currentTimeInstances);
             for (let i = 0; i < grouped.length; i++) {
                 ctx.strokeStyle = toColor(i, color_scheme);
                 bezierCurveThrough(ctx, grouped[i].map((point) => [point[0] * x_scale - x_offset, point[1] * y_scale +-y_offset]), 0.25, point_size);
@@ -228,4 +228,12 @@ document.getElementById("stop").addEventListener("click", function() {
     running = false;
     bottom.style.display = "none";
     menu.style.display = "flex";
+});
+document.addEventListener("keydown", function(e) {
+    if (running) {
+        clearInterval(mainLoop);
+        running = false;
+        bottom.style.display = "none";
+        menu.style.display = "flex"; 
+    }
 });
