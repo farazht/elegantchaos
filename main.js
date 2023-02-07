@@ -223,6 +223,7 @@ document.getElementById("begin").addEventListener("click", function() {
     // display
     display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail);
 });
+
 document.getElementById("stop").addEventListener("click", function() {
     clearInterval(mainLoop);
     running = false;
