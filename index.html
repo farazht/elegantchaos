@@ -12,7 +12,10 @@
     <script src="helper/math.js" type="text/javascript"></script>
     <script src="helper/bezier.js" type="text/javascript"></script>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- canvas -->
@@ -35,9 +38,18 @@
     <!-- menu (only shows when not running) -->
     <div id="menu">
 
+        <!-- title -->
+        <div id="title">
+            <h1 id="titleText">elegant<b>chaos</b></h1>
+            <br>
+            <p id="titleSubtext">beautiful mathematical equations</p>
+        </div>
+
+        <!-- main table of inputs-->
         <table>
             <tr> <!-- row 1-->
-                <td>
+                <td class="func_input">
+                    <button id="randomX"></button>
                     <div class="text">
                         <input id="x_func_input" placeholder="x_func" class="inputBox" maxlength="100">
                         <span class="tooltip">
@@ -55,7 +67,8 @@
                 </td>
             </tr>
             <tr> <!-- row 2-->
-                <td>
+                <td class="func_input">
+                    <button id="randomY"></button>
                     <div class="text">
                         <input id="y_func_input" placeholder="y_func" class="inputBox" maxlength="100">
                         <span class="tooltip">
@@ -162,12 +175,20 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td></td>
+                <td style="float: right;"><button id="randomPreset">get preset</button></td>
+            </tr>
         </table>
+
+        <!-- you didnt see this -->
+        <pre>
+
+
+        </pre>
 
         <!-- buttons -->
         <button id="begin">begin</button>
-        <button id="randomPreset">preset (recommended)</button>
-        <button id="random">random functions</button>
     </div>
 </body>
 </html>

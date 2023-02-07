@@ -60,7 +60,7 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
             clearInterval(mainLoop);
             running = false;
             bottom.style.display = "none";
-            menu.style.display = "block"
+            menu.style.display = "flex"
         }
 
         // create constantly updating array of time instances, for the trail (length = trail_length)
@@ -149,7 +149,10 @@ function customRound(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
-// event listeners
+// ===================
+// EVENT LISTENERS
+// ===================
+
 document.getElementById("randomPreset").addEventListener("click", () => {
     let preset = window.presets[Math.floor(Math.random() * window.presets.length)];
     document.getElementById("x_func_input").value = preset.x_func;
@@ -168,39 +171,34 @@ document.getElementById("randomPreset").addEventListener("click", () => {
     document.getElementById("connect_trail_input").value = preset.connect_trail;
 });
 
-document.getElementById("random").addEventListener("click", () => {
+document.getElementById("randomX").addEventListener("click", () => {
     let terms = ["x^2", "y^2", "t^2", "x", "y", "t", "x*t", "y*t", "x*y"],
         connectors = [" + ", " - "],
         random_x_func = "",
-        random_y_func = "",
-        x_length = Math.floor(Math.random() * 4) + 3,
-        y_length = Math.floor(Math.random() * 4) + 3;
+        x_length = Math.floor(Math.random() * 4) + 3;
 
     for (let i = 0; i < x_length; i++) {
         random_x_func += terms[Math.floor(Math.random() * terms.length)] + connectors[Math.floor(Math.random() * connectors.length)];
     }
 
+    random_x_func += terms[Math.floor(Math.random() * terms.length)];
+
+    document.getElementById("x_func_input").value = random_x_func;
+});
+
+document.getElementById("randomY").addEventListener("click", () => {
+    let terms = ["x^2", "y^2", "t^2", "x", "y", "t", "x*t", "y*t", "x*y"],
+        connectors = [" + ", " - "],
+        random_y_func = "",
+        y_length = Math.floor(Math.random() * 4) + 3;
+
     for (let i = 0; i < y_length; i++) {
         random_y_func += terms[Math.floor(Math.random() * terms.length)] + connectors[Math.floor(Math.random() * connectors.length)];
     }
 
-    random_x_func += terms[Math.floor(Math.random() * terms.length)];
     random_y_func += terms[Math.floor(Math.random() * terms.length)];
 
-    document.getElementById("x_func_input").value = random_x_func;
     document.getElementById("y_func_input").value = random_y_func;
-    document.getElementById("x_scale_input").value = 400;
-    document.getElementById("y_scale_input").value = 400;
-    document.getElementById("x_offset_input").value = 0;
-    document.getElementById("y_offset_input").value = 0;
-    document.getElementById("point_size_input").value = 1;
-    document.getElementById("t_initial_input").value = -1;
-    document.getElementById("t_final_input").value = 1;
-    document.getElementById("t_rate_input").value = 0.001;
-    document.getElementById("num_points_input").value = 500;
-    document.getElementById("trail_length_input").value = 5;
-    document.getElementById("color_scheme_input").value = 0;
-    document.getElementById("connect_trail_input").value = "false";
 });
 
 document.getElementById("begin").addEventListener("click", function() {
@@ -229,5 +227,5 @@ document.getElementById("stop").addEventListener("click", function() {
     clearInterval(mainLoop);
     running = false;
     bottom.style.display = "none";
-    menu.style.display = "block"
+    menu.style.display = "flex";
 });
