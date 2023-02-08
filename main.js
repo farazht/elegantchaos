@@ -203,6 +203,30 @@ function getImport(export_encoded) {
     document.getElementById("connect_trail_input").value = export_array[13];
 }
 
+// start function
+function start() {
+    if (running) return;
+
+    // get values from input fields
+    let x_func_raw = document.getElementById("x_func_input").value;
+    let y_func_raw = document.getElementById("y_func_input").value;
+    let x_scale = parseFloat(document.getElementById("x_scale_input").value);
+    let y_scale = parseFloat(document.getElementById("y_scale_input").value);
+    let x_offset = parseFloat(document.getElementById("x_offset_input").value);
+    let y_offset = parseFloat(document.getElementById("y_offset_input").value);
+    let point_size = parseFloat(document.getElementById("point_size_input").value);
+    let t_initial = parseFloat(document.getElementById("t_initial_input").value);
+    let t_final = parseFloat(document.getElementById("t_final_input").value);
+    let t_rate = parseFloat(document.getElementById("t_rate_input").value);
+    let num_points = parseFloat(document.getElementById("num_points_input").value);
+    let trail_length = parseFloat(document.getElementById("trail_length_input").value);
+    let color_scheme = parseFloat(document.getElementById("color_scheme_input").value);
+    let connect_trail = document.getElementById("connect_trail_input").value;
+    
+    // display
+    display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail);    
+}
+
 // stop function
 function stop() {
     clearInterval(mainLoop);
@@ -260,31 +284,21 @@ document.getElementById("randomY").addEventListener("click", () => {
 
 // start button
 document.getElementById("begin").addEventListener("click", function() {
-    if (running) return;
-
-    // get values from input fields
-    let x_func_raw = document.getElementById("x_func_input").value;
-    let y_func_raw = document.getElementById("y_func_input").value;
-    let x_scale = parseFloat(document.getElementById("x_scale_input").value);
-    let y_scale = parseFloat(document.getElementById("y_scale_input").value);
-    let x_offset = parseFloat(document.getElementById("x_offset_input").value);
-    let y_offset = parseFloat(document.getElementById("y_offset_input").value);
-    let point_size = parseFloat(document.getElementById("point_size_input").value);
-    let t_initial = parseFloat(document.getElementById("t_initial_input").value);
-    let t_final = parseFloat(document.getElementById("t_final_input").value);
-    let t_rate = parseFloat(document.getElementById("t_rate_input").value);
-    let num_points = parseFloat(document.getElementById("num_points_input").value);
-    let trail_length = parseFloat(document.getElementById("trail_length_input").value);
-    let color_scheme = parseFloat(document.getElementById("color_scheme_input").value);
-    let connect_trail = document.getElementById("connect_trail_input").value;
-
-    // display
-    display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail);
+    start();
 });
 
 // stop button
 document.getElementById("stop").addEventListener("click", function() {
     stop();
+});
+
+// if enter key is pressed, start() is called
+document.addEventListener("keydown", function(e) {
+    if (e.keyCode == 13) {
+        if (!running) {
+            start();
+        }
+    }
 });
 
 // if escape key is pressed, stop() is called
