@@ -160,6 +160,10 @@ canvas {
     margin: 0;
     padding: 0;
 }
+#code::-webkit-input-placeholder {
+    text-align: center;
+}
+
 
 
 /* bottom of screen */
@@ -174,7 +178,7 @@ canvas {
 #stop {
     position: absolute;
     bottom: 1vh;
-    right: 1vw;
+    right: 1vh;
     width: 6vh;
     height: 6vh;
     background: url('assets/stop_button.svg');

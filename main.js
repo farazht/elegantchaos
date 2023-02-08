@@ -21,6 +21,7 @@ canvas.style.opacity = 0.5;
 // ===================
 
 function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail) {
+    // enable running mode display
     running = true;
     bottom.style.display = "block";
     menu.style.display = "none";
@@ -66,11 +67,7 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
     window.mainLoop = setInterval(() => {
         // stop loop if t_final is reached
         if (t >= t_final) {
-            clearInterval(mainLoop);
-            running = false;
-            bottom.style.display = "none";
-            menu.style.display = "flex";
-            canvas.style.opacity = 0.5;
+            stop();
         }
 
         // create constantly updating array of time instances, for the trail (length = trail_length)
@@ -112,7 +109,7 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
 // HELPER FUNCTIONS
 // ===================
 
-// gets points with same index from each array in input array, returns array of arrays of points
+// function to get points with same index from each array in input array, and return array of arrays of points
 function crossArray(inputArray) {
     let outputArray = [];
     for (let i = 0; i < inputArray[0].length; i++) {
@@ -163,7 +160,7 @@ function customRound(value, decimals) {
     return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
-// function to get an export code
+// function to get an export code from the current settings
 function getExport() {
     let x_func_raw = document.getElementById("x_func_input").value;
     let y_func_raw = document.getElementById("y_func_input").value;
@@ -206,30 +203,26 @@ function getImport(export_encoded) {
     document.getElementById("connect_trail_input").value = export_array[13];
 }
 
+// stop function
+function stop() {
+    clearInterval(mainLoop);
+    running = false;
+    bottom.style.display = "none";
+    menu.style.display = "flex";
+    canvas.style.opacity = 0.5;
+}
+
 // ===================
 // EVENT LISTENERS
 // ===================
 
+// get random preset code
 document.getElementById("randomPreset").addEventListener("click", () => {
-    let preset = window.presets[Math.floor(Math.random() * window.presets.length)];
-    document.getElementById("x_func_input").value = preset.x_func;
-    document.getElementById("y_func_input").value = preset.y_func;
-    document.getElementById("x_scale_input").value = preset.x_scale;
-    document.getElementById("y_scale_input").value = preset.y_scale;
-    document.getElementById("x_offset_input").value = preset.x_offset;
-    document.getElementById("y_offset_input").value = preset.y_offset;
-    document.getElementById("point_size_input").value = preset.point_size;
-    document.getElementById("t_initial_input").value = preset.t_initial;
-    document.getElementById("t_final_input").value = preset.t_final;
-    document.getElementById("t_rate_input").value = preset.t_rate;
-    document.getElementById("num_points_input").value = preset.num_points;
-    document.getElementById("trail_length_input").value = preset.trail_length;
-    document.getElementById("color_scheme_input").value = preset.color_scheme;
-    document.getElementById("connect_trail_input").value = preset.connect_trail;
-
+    getImport(window.presets[Math.floor(Math.random() * window.presets.length)]);
     getExport();
 });
 
+// randomize x function
 document.getElementById("randomX").addEventListener("click", () => {
     let terms = ["x^2", "y^2", "t^2", "x", "y", "t", "x*t", "y*t", "x*y"],
         connectors = [" + ", " - "],
@@ -247,6 +240,7 @@ document.getElementById("randomX").addEventListener("click", () => {
     getExport();
 });
 
+// randomize y function
 document.getElementById("randomY").addEventListener("click", () => {
     let terms = ["x^2", "y^2", "t^2", "x", "y", "t", "x*t", "y*t", "x*y"],
         connectors = [" + ", " - "],
@@ -264,6 +258,7 @@ document.getElementById("randomY").addEventListener("click", () => {
     getExport();
 });
 
+// start button
 document.getElementById("begin").addEventListener("click", function() {
     if (running) return;
 
@@ -287,22 +282,16 @@ document.getElementById("begin").addEventListener("click", function() {
     display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, point_size, t_initial, t_final, t_rate, num_points, trail_length, color_scheme, connect_trail);
 });
 
+// stop button
 document.getElementById("stop").addEventListener("click", function() {
-    clearInterval(mainLoop);
-    running = false;
-    bottom.style.display = "none";
-    menu.style.display = "flex";
-    canvas.style.opacity = 0.5;
+    stop();
 });
 
+// if escape key is pressed, stop() is called
 document.addEventListener("keydown", function(e) {
     if (e.keyCode == 27) {
         if (running) {
-            clearInterval(mainLoop);
-            running = false;
-            bottom.style.display = "none";
-            menu.style.display = "flex"; 
-            canvas.style.opacity = 0.5;
+            stop();
         }
     }
 });
