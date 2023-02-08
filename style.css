@@ -178,7 +178,7 @@ canvas {
 #stop {
     position: absolute;
     bottom: 1vh;
-    right: 1v;
+    right: 1vh;
     width: 6vh;
     height: 6vh;
     background: url('assets/stop_button.svg');
