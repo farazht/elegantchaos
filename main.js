@@ -292,15 +292,6 @@ document.getElementById("stop").addEventListener("click", function() {
     stop();
 });
 
-// if enter key is pressed, start() is called
-document.addEventListener("keydown", function(e) {
-    if (e.keyCode == 13) {
-        if (!running) {
-            start();
-        }
-    }
-});
-
 // if escape key is pressed, stop() is called
 document.addEventListener("keydown", function(e) {
     if (e.keyCode == 27) {
@@ -327,6 +318,28 @@ document.getElementById("code").addEventListener("input", function() {
         getImport(document.getElementById("code").value);
     }
 });
+
+// music
+const track1 = document.getElementById("track1");
+const track2 = document.getElementById("track2");
+const track3 = document.getElementById("track3");
+
+document.getElementById("begin").addEventListener("click", function() {
+    track1.play();
+    document.getElementById("begin").removeEventListener("click", arguments.callee);
+});
+
+track1.addEventListener("ended", function() {
+  track2.play();
+});
+track2.addEventListener("ended", function() {
+  track3.play();
+});
+track3.addEventListener("ended", function() {
+  track1.currentTime = 0;
+  track1.play();
+});
+
 
 
 
