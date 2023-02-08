@@ -1,3 +1,4 @@
+/* general styling */
 html {
     background-color: black;
     color: white;
@@ -12,6 +13,17 @@ body {
     top: 10vh;
     left: 10vw;
 }
+
+/* title */
 #elegant-chaos- {
     font-size: 2.5em;
 }
+
+/* link colors */
+a:visited {
+    color: rgb(175, 175, 175);
+}
+a:link {
+    color:rgb(200, 200, 200);
+}
+
