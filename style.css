@@ -26,7 +26,7 @@ canvas {
 /* title */
 #title {
     text-align: center;
-    margin-bottom: 7vh;
+    margin-bottom: 10vh;
 }
 #titleText{
     display: inline;
@@ -64,50 +64,32 @@ canvas {
     width: 200px;
     color: white;
     font-size: 12px;
-    background-color: #3e3e3e;
+    background-color: rgba(50, 50, 50, 0.6);
     border-radius: 10px;
     padding: 10px 15px 10px 15px;
 }
+.tooltipL {
+    translate: -5vw 0;
+}
+.tooltipR {
+    translate: 5vw 0;
+}
 .text:hover .tooltip {
     visibility: visible;
-}
-.inputBox {
-    height: 4vh;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    background: none;
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding-left: 5px;
 }
 .text {
     width: 10vw;
 }
 #randomX, #randomY {
-    width: 4vh;
-    height: 4vh;
+    width: 3vh;
+    height: 3vh;
     background: url('assets/random_button.svg');
     background-size: contain;
-    filter: invert();
     cursor: pointer;
     padding: 0;
     margin: 0;
+    margin-right: 0.3em;
     border: none;
-}
-.func_input {
-    display: grid;
-    grid-template-columns: 4vh calc(10vw - 4vh - 3px);
-}
-.func_input button {
-    grid-column: 1;
-}
-.func_input .text {
-    grid-column: 2;
-    width: 100%;
-    margin-left: 3px;
 }
 #randomPreset {
     background: none;
@@ -124,7 +106,7 @@ canvas {
     background: none;
     border: 1px solid white;
     border-radius: 15px;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 100;
     cursor: pointer;
 
@@ -139,8 +121,8 @@ canvas {
     color: #000;
 }
 #helpPage {
-    width: 3vh;
-    height: 3vh;
+    width: 2em;
+    height: 2em;
     background: url('assets/help_button.svg');
     background-size: contain;
     filter: invert();
@@ -150,7 +132,6 @@ canvas {
     border: none;
 }
 #code {
-    /* input box with only underline */
     border: none;
     border-bottom: 1px solid white;
     background: none;
@@ -158,11 +139,85 @@ canvas {
     font-size: 0.8em;
     font-weight: 100;
     margin: 0;
-    padding: 0;
+    padding-bottom: 0.2vh;
 }
 #code::-webkit-input-placeholder {
     text-align: center;
+
 }
+
+/* table */
+#mainTable {
+    border-collapse: collapse;
+}
+.inputBox {
+    height: 4vh;
+    width: 8vw;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background: none;
+    color: white;
+    border: 1px solid white;
+    padding-left: 5px;
+}
+.tableTextL {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background-color: white;
+    color: black;
+    height: 4vh;
+    width: 7em;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: right;
+    padding-right: 0.3em;
+    align-items: center;
+    font-size: 0.7em;
+}
+.tableInputL {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-right: 1vw;
+}
+.tableInputR {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    margin-left: 1vw;
+}
+.tableTextR {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: white;
+    color: black;
+    height: 4vh;
+    width: 7em;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: left;
+    padding-left: 0.3em;
+    align-items: center;
+    font-size: 0.7em;
+}
+
+/* under-table */
+#underTable {
+    margin-top: 1vh;
+    margin-bottom: 10vh;
+
+    display: flex;
+    flex-direction: row;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
 
 
 

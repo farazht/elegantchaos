@@ -21,6 +21,11 @@ const presets = [
     "LXheMiAtIHgqdCArIHkqdCAtIHg7LXleMiAtIHReMiAtIHgqeSAtIHgqdCAtIHkqdCAtIHk7NDAwOzQwMDstNTA7LTEwMDsxOy0wLjA1OzAuNTM7MC4wMDAyOzgwMDs4OzA7ZmFsc2U", // circle into mess 
     "LXgqeSp0IC0geF4yIC0geSAtIHReMjsteCp5KnQgKyB4ICsgeV4yICsgdDs0MDA7NDAwOy0xMDA7LTEwMDsxOy0xLjE1OzAuNDQ7MC4wMDA0OzYwMDs1OzA7ZmFsc2U", // triangle into spirals
     "eCp0IC0geSAtIHleMjt4IC0gMnkqdDs2NTA7NjUwOzA7MDs1Oy0wLjU7MC45OzAuMDAwNTsyMDsxMDA7ODt0cnVl", // the pink rose
+    "eCp0IC0geV4yIC0geCAtIHkqdCArIHheMiAtIHkqdCArIHQ7eSAtIHkgKyB4KnQgLSB5ICsgdCAtIHgqeSArIHgqdDs0MDA7NDAwOzA7MDsxOy0wLjM7MDswLjAwMDA3OzUwMDs1OzEwO2ZhbHNl", // simple white spiral
+    "eV4yICsgeV4yICsgeSAtIHReMjt4KnkgKyB5KnQgLSB4KnkgKyB4KnQ7NDAwOzQwMDswOzA7MTstMC43Oy0wLjU7MC4wMDAwNTs3NTA7Njs1O2ZhbHNl", // blue whirlpool
+    "LXkgKyB0XjIgKyB4XjI7MnheMiArIHkqdCArIHg7ODAwOzgwMDswOzc1OzE7LTAuMDE7MC40NTswLjAwMDE1OzYwMDs3Ozc7ZmFsc2U", // yellow circle into flower
+    "LXkgKyB0XjIgKyB4XjIgKyB4OzJ4XjIgKyB5KnQgKyB4OzQwMDs0MDA7MDswOzE7MDswLjM1OzAuMDAwMTs1MDA7NTswO2ZhbHNl", // spiral into shape
+    "eF4yICsgeV4yIC0gdF4yO3heMiAtIHleMiArIHReMjs1MDA7NTAwOy03NTsyNTA7MTswLjU7MS4wNzswLjAwMDI7NTAwOzU7MDtmYWxzZQ", // triangle pop!
 ]
 
 window.presets = presets;

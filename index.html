@@ -47,151 +47,115 @@
         </div>
 
         <!-- main table of inputs-->
-        <table>
-            <tr> <!-- row 1-->
-                <td class="func_input">
-                    <button id="randomX"></button>
-                    <div class="text">
-                        <input id="x_func_input" placeholder="x_func" class="inputBox" maxlength="100">
-                        <span class="tooltip">
-                            <b>x_func:</b><br><br>applied iteratively <i>num_points</i> times to the previous point's x value.<br><br>allowed terms: x, y, and t
-                        </span>
-                    </div>
-                </td>
-                <td> 
-                    <div class="text">
-                        <input id="t_initial_input" placeholder="t_initial" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>t_initial:</b><br><br>initial t value.
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr> <!-- row 2-->
-                <td class="func_input">
-                    <button id="randomY"></button>
-                    <div class="text">
-                        <input id="y_func_input" placeholder="y_func" class="inputBox" maxlength="100">
-                        <span class="tooltip">
-                            <b>y_func:</b><br><br>applied iteratively <i>num_points</i> times to the previous point's x value.<br><br>allowed terms: x, y, and t
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <div class="text">
-                        <input id="t_final_input" placeholder="t_final" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>t_final:</b><br><br>final t value.
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr> <!-- row 3-->
-                <td>
-                    <div class="text">
-                    <input id="x_scale_input" placeholder="x_scale" class="inputBox" maxlength="20">
-                    <span class="tooltip">
-                        <b>x_scale:</b><br><br>scales x value of all points.<br><br>recommended: >100
+        <table id="mainTable">
+            <tr> <!-- row 1 -->
+                <td><div class="tableTextL text"><button id="randomX"></button>x_func
+                    <span class="tooltip tooltipL">
+                        <b>x_func:</b><br><br>applied iteratively <i>num_points</i> times to the previous point's x value.<br><br>allowed terms: x, y, and t
+                    </span></div></td>
+                <td><input id="x_func_input" class="inputBox tableInputL" maxlength="200"></td>
+                <td><input id="t_initial_input" class="inputBox tableInputR" maxlength="50"></td>
+                <td><div class="tableTextR text">t_initial
+                    <span class="tooltip tooltipR">
+                        <b>t_initial:</b><br><br>initial t value.
                     </span>
-                </div>
-            </td>
-                <td>
-                    <div class="text">
-                        <input id="t_rate_input" placeholder="t_rate" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>t_rate:</b><br><br><i>dt,</i> or t's rate of change - added to t every 10ms.<br><br>recommended: &lt;0.01
-                        </span>
-                    </div>
-                </td>
+                </div></td>
             </tr>
-            <tr> <!-- row 4-->
-                <td>
-                    <div class="text">
-                        <input id="y_scale_input" placeholder="y_scale" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>y_scale:</b><br><br>scales y value of all points.<br><br>recommended: >100
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <div class="text">
-                        <input id="num_points_input" placeholder="num_points" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>num_points:</b><br><br>number of points, or more specifically, number of times <i>x_func</i> and <i>y_func</i> are iteratively applied.
-                        </span>
-                    </div>
-                </td>
+            <tr> <!-- row 2 -->
+                <td><div class="tableTextL text"><button id="randomY"></button>y_func
+                    <span class="tooltip tooltipL">
+                        <b>y_func:</b><br><br>applied iteratively <i>num_points</i> times to the previous point's x value.<br><br>allowed terms: x, y, and t
+                    </span></div></td>
+                <td><input id="y_func_input" class="inputBox tableInputL" maxlength="200"></td>
+                <td><input id="t_final_input" class="inputBox tableInputR" maxlength="50"></td>
+                <td><div class="tableTextR text">t_final
+                    <span class="tooltip tooltipR">
+                        <b>t_final:</b><br><br>final t value.
+                    </span>
+                </div></td>
             </tr>
-            <tr> <!-- row 5-->
-                <td>
-                    <div class="text">
-                        <input id="x_offset_input" placeholder="x_offset" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>x_offset:</b><br><br>offsets x value of all points.<br><br>positive = left<br>negative = right
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <div class="text">
-                        <input id="trail_length_input" placeholder="trail_length" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>trail_length:</b><br><br>number of points per trail. (setting this to 2 will cause errors when <i>connect_trail</i> is true)<br><br>recommended: &lt;10
-                        </span>
-                    </div>
-                </td>
+            <tr> <!-- row 3 -->
+                <td><div class="tableTextL text">x_scale
+                    <span class="tooltip tooltipL">
+                        <b>x_scale:</b><br><br>scales x value of all points.<br><br>recommended: >100
+                    </span></div></td>
+                <td><input id="x_scale_input" class="inputBox tableInputL" maxlength="50"></td>
+                <td><input id="t_rate_input" class="inputBox tableInputR" maxlength="50"></td>
+                <td><div class="tableTextR text">t_rate
+                    <span class="tooltip tooltipR">
+                        <b>t_rate:</b><br><br><i>dt,</i> or t's rate of change - added to t every 10ms.<br><br>recommended: &lt;0.01
+                    </span>
+                </div></td>
             </tr>
-            <tr> <!-- row 6-->
-                <td>
-                    <div class="text">
-                        <input id="y_offset_input" placeholder="y_offset" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>y_offset:</b><br><br>offsets y value of all points.<br><br>positive = up<br>negative = down
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <div class="text">
-                        <input id="color_scheme_input" placeholder="color_scheme" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>color_scheme (0 to 11):</b><br><br>0 = rainbow<br>1 = cyan<br>2 = blue-purple-pink<br>3 = green-yellow<br>4 = magenta<br>5 = blue-cyan<br>6 = red-orange-yellow<br>7 = yellow<br>8 = red-magenta<br>9 = green-cyan<br>10 = white<br>11 = black
-                        </span>
-                    </div>
-                </td>
+            <tr> <!-- row 4 -->
+                <td><div class="tableTextL text">y_scale
+                    <span class="tooltip tooltipL">
+                        <b>y_scale:</b><br><br>scales y value of all points.<br><br>recommended: >100
+                    </span></div></td>
+                <td><input id="y_scale_input" class="inputBox tableInputL" maxlength="50"></td>
+                <td><input id="num_points_input" class="inputBox tableInputR" maxlength="50"></td>
+                <td><div class="tableTextR text">num_points
+                    <span class="tooltip tooltipR">
+                        <b>num_points:</b><br><br>number of points, or more specifically, number of times <i>x_func</i> and <i>y_func</i> are iteratively applied.
+                    </span>
+                </div></td>
             </tr>
-            <tr> <!-- row 7-->
-                <td>
-                    <div class="text">
-                        <input id="point_size_input" placeholder="point_size" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>point_size:</b><br><br>point diameter in pixels.<br><br>recommended: 1-3
-                        </span>
-                    </div>
-                </td>
-                <td>
-                    <div class="text">
-                        <input id="connect_trail_input" placeholder="connect_trail" class="inputBox" maxlength="20">
-                        <span class="tooltip">
-                            <b>connect_trail (true/false):</b><br><br><b>use with caution.</b><br><br>when set to true, trails will be shown as bezier curves of <i>trail_length</i> points.<br><br>this will not work as intended without significant tweaking, and should only be used at extremely low <i>t_rate</i> values, or with extremely stable functions.<br><br>don't be too alarmed when you try this out for the first time.
-                        </span>
-                    </div>
-                </td>
+            <tr> <!-- row 5 -->
+                <td><div class="tableTextL text">x_offset
+                    <span class="tooltip tooltipL">
+                        <b>x_offset:</b><br><br>offsets x value of all points.<br><br>positive = left<br>negative = right
+                    </span></div></td>
+                <td><input id="x_offset_input" class="inputBox tableInputL" maxlength="50"></td>
+                <td><input id="trail_length_input" class="inputBox tableInputR" maxlength="50"></td>
+                <td><div class="tableTextR text">trail_length
+                    <span class="tooltip tooltipR">
+                        <b>trail_length:</b><br><br>number of points per trail. (setting this to 2 will cause errors when <i>connect_trail</i> is true)<br><br>recommended: &lt;10
+                    </span>
+                </div></td>
             </tr>
-            <tr>
-                <td><a href="/chaos/help/index.html"><button id="helpPage"></button></a></td>
-                <td style="float: right;"><button id="randomPreset">use preset<br>(recommended)</button></td>
+            <tr> <!-- row 6 -->
+                <td><div class="tableTextL text">y_offset
+                    <span class="tooltip tooltipL">
+                        <b>y_offset:</b><br><br>offsets y value of all points.<br><br>positive = up<br>negative = down
+                    </span></div></td>
+                <td><input id="y_offset_input" class="inputBox tableInputL" maxlength="50"></td>
+                <td><input id="color_scheme_input" class="inputBox tableInputR" maxlength="50"></td>
+                <td><div class="tableTextR text">color_scheme
+                    <span class="tooltip tooltipR">
+                        <b>color_scheme (0 to 11):</b><br><br>0 = rainbow<br>1 = cyan<br>2 = blue-purple-pink<br>3 = green-yellow<br>4 = magenta<br>5 = blue-cyan<br>6 = red-orange-yellow<br>7 = yellow<br>8 = red-magenta<br>9 = green-cyan<br>10 = white<br>11 = black
+                    </span>
+                </div></td>
+            </tr>
+            <tr> <!-- row 7 -->
+                <td><div class="tableTextL text">point_size
+                    <span class="tooltip tooltipL">
+                        <b>point_size:</b><br><br>point diameter in pixels.<br><br>recommended: 1-3
+                    </span></div></td>
+                <td><input id="point_size_input" class="inputBox tableInputL" maxlength="50"></td>
+                <td><input id="connect_trail_input" class="inputBox tableInputR" maxlength="50"></td>
+                <td><div class="tableTextR text">connect_trail
+                    <span class="tooltip tooltipR">
+                        <b>connect_trail (true/false):</b><br><br><b>use with caution.</b><br><br>when set to true, trails will be shown as bezier curves of <i>trail_length</i> points.<br><br>this will not work as intended without significant tweaking, and should only be used at extremely low <i>t_rate</i> values, or with extremely stable functions.<br><br>don't be too alarmed when you try this out for the first time.
+                    </span>
+                </div></td>
             </tr>
         </table>
 
-        <input id="code" placeholder="import/export code">
-
-        <!-- you didnt see this -->
-        <pre>
-
-
-        </pre>
+        <!-- under table -->
+        <div id="underTable" style="width: 30vw">
+            <div class="center" style="width: 10vw;">
+                <a href="/chaos/help/index.html"><button id="helpPage"></button></a>
+            </div>
+            <div class="center" style="width: 10vw;">
+                <input id="code" placeholder="import/export code">
+            </div>
+            <div class="center" style="width: 10vw;">
+                <button id="randomPreset">random preset<br>(recommended)</button>
+            </div>
+        </div>
 
         <!-- buttons -->
-        <button id="begin">begin</button>
+        <button id="begin">begin.</button>
     </div>
 </body>
 </html>
