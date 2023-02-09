@@ -25,9 +25,14 @@ const presets = [
     "eV4yICsgeV4yICsgeSAtIHReMjt4KnkgKyB5KnQgLSB4KnkgKyB4KnQ7NDAwOzQwMDswOzA7MTstMC43Oy0wLjU7MC4wMDAwNTs3NTA7Njs1O2ZhbHNl", // blue whirlpool
     "LXkgKyB0XjIgKyB4XjI7MnheMiArIHkqdCArIHg7ODAwOzgwMDswOzc1OzE7LTAuMDE7MC40NTswLjAwMDE1OzYwMDs3Ozc7ZmFsc2U", // yellow circle into flower
     "LXkgKyB0XjIgKyB4XjIgKyB4OzJ4XjIgKyB5KnQgKyB4OzQwMDs0MDA7MDswOzE7MDswLjM1OzAuMDAwMTs1MDA7NTswO2ZhbHNl", // spiral into shape
-    "eF4yICsgeV4yIC0gdF4yO3heMiAtIHleMiArIHReMjs1MDA7NTAwOy03NTsyNTA7MTswLjU7MS4wNzswLjAwMDI7NTAwOzU7MDtmYWxzZQ", // triangle pop!
+    "eF4yICsgeV4yIC0gdF4yO3heMiAtIHleMiArIHReMjs1MDA7NTAwOy03NTsyNTA7MTswLjU7MS4wNzswLjAwMDI7NTAwOzU7MDtmYWxzZQ", // triangle pop! (happens when three points at bottom-right intercept)
     "dCArIHgqdCArIHQgLSB4KnQgKyB5XjI7eSp0IC0geV4yICsgeCp5ICsgeV4yICsgdF4yOzIwMDsyMDA7MDswOzE7LTAuNzU7LTAuMzg7MC4wMDAxNTs1MDA7NTs0O2ZhbHNl", // circle dissolve
     "eF4yIC0gdF4yIC0geCp5IC0geF4yICsgeV4yO3gqdCAtIHgqeSAtIHggKyB0IC0geF4yOzQwMDs0MDA7MDsxMDA7MTswLjI7MC45NjswLjAwMDI7NTAwOzU7NztmYWxzZQ", // yellow triangle
+    "eF4yIC0geCp0ICsgeSp0ICsgeTt5XjIgLSB0XjIgLSB4KnkgLSB4KnQgLSB5KnQgKyB4OzUwMDs1MDA7MDswOzI7LTAuMjswOzAuMDAwMTsyMDA7MzA7NDtmYWxzZQ", // heart
+    "eF4yIC0geCp0ICsgeSp0ICsgeTt5XjIgLSB0XjIgLSB4KnkgLSB4KnQgLSB5KnQgKyB4OzUwMDs1MDA7MTAwOzA7MTswOzAuNjswLjAwMDI7NTAwOzEwOzA7ZmFsc2U", // cool double spiral
+    "eF4yICsgdCArIHkgKyB0XjIgLSB0XjIgKyB4XjIgKyB4Knk7eCp0ICsgdCAtIHQgKyB4XjIgKyB4Knk7NjAwOzYwMDswOzIwMDsxOy0wLjc7LTAuNDswLjAwMDE7NTAwOzU7MDtmYWxzZQ", // triangle dissolve
+    "dF4yIC0geV4yIC0geCp5IC0geCp0IC0geSp0IC0geCAtIHQ7dF4yIC0geCp0IC15ICsgeDs0MDA7NDAwOzUwOzUwOzE7LTAuNDg7LTAuMjI7MC4wMDAwNjs1MDA7NTswO2ZhbHNl", // triangle shrink
+    "eF4yIC0gdCAtIHgqdCArIHkgLSB4Knk7eCp5IC0geSp0IC0geCAtIHleMiArIHkqdCArIHheMiAtIHReMjs0MDA7NDAwOzA7MDsxOy0wLjM7MC4yODswLjAwMDA3OzUwMDs1OzEwO2ZhbHNl", // white starry explosion 
 ]
 
 window.presets = presets;
