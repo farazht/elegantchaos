@@ -207,7 +207,7 @@ canvas {
 
 }
 
-/* under-table */
+/* under table */
 #underTable {
     margin-top: 1vh;
     margin-bottom: 10vh;
@@ -222,9 +222,6 @@ canvas {
     padding: 0;
     margin: 0;
 }
-
-
-
 
 /* bottom of screen */
 #stats {

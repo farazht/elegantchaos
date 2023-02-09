@@ -34,7 +34,7 @@ The following settings can be helpful for quickly evaluating the behavior of a s
 
 From there, if you see something interesting, you can easily adjust the scale and offset to fit it to your screen, and adjust the *t* settings to get a better look at the behavior. 
 
-Remember, you can slow down time as much as you'd like, and it will almost certainly still look cool.
+Remember, you can slow down time as much as you'd like, and it will almost certainly still look interesting.
 
 ## Explanation
 
@@ -46,7 +46,7 @@ Then, this point is passed through the functions *x_func* and *y_func* to produc
 
 > [x<sub>2</sub>, y<sub>2</sub>] = [x_func(x<sub>1</sub>), y_func(y<sub>1</sub>)]
 
-This is repeated for *num_points* iterations, and a 2d array is produced. In the code, this is called a *timeInstance* — partly because it represents all points at a single point in time, and partly because it sounded cool.
+This is repeated for *num_points* iterations, and a 2d array is produced. In the code, this is called a *timeInstance* — partly because it represents all points at a single point in time, and partly because it sounds cool.
 
 > timeInstance = [[x<sub>1</sub>, y<sub>1</sub>], [x<sub>2</sub>, y<sub>2</sub>], [x<sub>3</sub>, y<sub>3</sub>], ..., [x<sub>num_points</sub>, y<sub>num_points</sub>]]
 

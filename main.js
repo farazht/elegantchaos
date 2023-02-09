@@ -88,7 +88,6 @@ function display(x_func_raw, y_func_raw, x_scale, y_scale, x_offset, y_offset, p
                     ctx.beginPath();
                     ctx.arc(currentTimeInstances[i][j][0] * x_scale - x_offset, currentTimeInstances[i][j][1] * y_scale - y_offset, point_size, 0, 2 * Math.PI);
                     ctx.fill();
-                    // ctx.fillRect(currentlyDisplayed[i][j][0] * x_scale - x_offset, currentlyDisplayed[i][j][1] * y_scale - y_offset, point_size, point_size, );
                 }
             }
         } else { // connects trail with bezier curve
@@ -319,7 +318,10 @@ document.getElementById("code").addEventListener("input", function() {
     }
 });
 
-// music
+// ===================
+// MUSIC LOOP
+// ===================
+
 const track1 = document.getElementById("track1");
 const track2 = document.getElementById("track2");
 const track3 = document.getElementById("track3");
@@ -332,9 +334,11 @@ document.getElementById("begin").addEventListener("click", function() {
 track1.addEventListener("ended", function() {
   track2.play();
 });
+
 track2.addEventListener("ended", function() {
   track3.play();
 });
+
 track3.addEventListener("ended", function() {
   track1.currentTime = 0;
   track1.play();
