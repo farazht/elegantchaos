@@ -103,6 +103,7 @@ canvas {
     text-decoration-color: white;
     font-weight: 100;
     font-size: 0.7em;
+    user-select: none;
 }
 #begin {
     background: none;
@@ -117,6 +118,7 @@ canvas {
     margin: 0 -.5rem;
     padding: 0.5rem 1rem;
     transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    user-select: none;
 }
 #begin:hover {
     box-shadow: inset 0 0 0 300px #fff;
