@@ -14,6 +14,9 @@ body {
     top: 10vh;
     left: 10vw;
 }
+body > p:last-child {
+    margin-bottom: 10vh;
+}
 
 /* title */
 #elegant-chaos- {
