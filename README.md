@@ -4,7 +4,7 @@
 
 *elegant**chaos*** is a web-based tool for visualising chaotic mathematical systems. It was created with simplicity and elegance in mind, while also allowing for extensive customization and interactivity.
 
-This project was heavily inspired by [CodeParade's](https://www.youtube.com/@CodeParade) video on [Chaos Equations](https://www.youtube.com/watch?v=fDSIRXmnVvk), and it employs many of the same mathematical methods.
+This project was heavily inspired by [CodeParade's](https://www.youtube.com/@CodeParade) exploration of [Chaos Equations](https://www.youtube.com/watch?v=fDSIRXmnVvk), and it employs many of the same mathematical methods.
 
 ## Usage
 
@@ -82,5 +82,14 @@ The points bolded above will display in the same color. This is the same for eve
 
 Finally, the points are scaled, offset, and drawn to the screen.
 
+---
+
+### Music: 
+
+Erik Satie - Gymnopédie No.1
+
+Frédéric Chopin - Nocturne op.9 No.2
+
+Claude Debussy - Clair de lune
 
 
