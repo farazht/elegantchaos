@@ -35,12 +35,14 @@ canvas {
     padding: 0;
     line-height: 0;
     font-weight: 300;
+    user-select: none;
 }
 #titleSubtext{
     float: right;
     font-size: 0.54em;
     line-height: 0;
     font-weight: 300;
+    user-select: none;
 }
 
 /* menu and inputs */
@@ -155,11 +157,11 @@ canvas {
     width: 8vw;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
     background: none;
     color: white;
     border: 1px solid white;
     padding-left: 5px;
+    box-sizing: border-box;
 }
 .tableTextL {
     border-top-left-radius: 15px;
@@ -175,6 +177,7 @@ canvas {
     padding-right: 0.3em;
     align-items: center;
     font-size: 0.7em;
+    transform: translateX(0.2vw);
 }
 .tableInputL {
     border-top-right-radius: 15px;
@@ -200,6 +203,8 @@ canvas {
     padding-left: 0.3em;
     align-items: center;
     font-size: 0.7em;
+    transform: translateX(-0.2vw);
+
 }
 
 /* under-table */

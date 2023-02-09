@@ -27,6 +27,7 @@ const presets = [
     "LXkgKyB0XjIgKyB4XjIgKyB4OzJ4XjIgKyB5KnQgKyB4OzQwMDs0MDA7MDswOzE7MDswLjM1OzAuMDAwMTs1MDA7NTswO2ZhbHNl", // spiral into shape
     "eF4yICsgeV4yIC0gdF4yO3heMiAtIHleMiArIHReMjs1MDA7NTAwOy03NTsyNTA7MTswLjU7MS4wNzswLjAwMDI7NTAwOzU7MDtmYWxzZQ", // triangle pop!
     "dCArIHgqdCArIHQgLSB4KnQgKyB5XjI7eSp0IC0geV4yICsgeCp5ICsgeV4yICsgdF4yOzIwMDsyMDA7MDswOzE7LTAuNzU7LTAuMzg7MC4wMDAxNTs1MDA7NTs0O2ZhbHNl", // circle dissolve
+    "eF4yIC0gdF4yIC0geCp5IC0geF4yICsgeV4yO3gqdCAtIHgqeSAtIHggKyB0IC0geF4yOzQwMDs0MDA7MDsxMDA7MTswLjI7MC45NjswLjAwMDI7NTAwOzU7NztmYWxzZQ", // yellow triangle
 ]
 
 window.presets = presets;
