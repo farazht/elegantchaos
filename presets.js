@@ -32,7 +32,15 @@ const presets = [
     "eF4yIC0geCp0ICsgeSp0ICsgeTt5XjIgLSB0XjIgLSB4KnkgLSB4KnQgLSB5KnQgKyB4OzUwMDs1MDA7MTAwOzA7MTswOzAuNjswLjAwMDI7NTAwOzEwOzA7ZmFsc2U", // cool double spiral
     "eF4yICsgdCArIHkgKyB0XjIgLSB0XjIgKyB4XjIgKyB4Knk7eCp0ICsgdCAtIHQgKyB4XjIgKyB4Knk7NjAwOzYwMDswOzIwMDsxOy0wLjc7LTAuNDswLjAwMDE7NTAwOzU7MDtmYWxzZQ", // triangle dissolve
     "dF4yIC0geV4yIC0geCp5IC0geCp0IC0geSp0IC0geCAtIHQ7dF4yIC0geCp0IC15ICsgeDs0MDA7NDAwOzUwOzUwOzE7LTAuNDg7LTAuMjI7MC4wMDAwNjs1MDA7NTswO2ZhbHNl", // triangle shrink
-    "eF4yIC0gdCAtIHgqdCArIHkgLSB4Knk7eCp5IC0geSp0IC0geCAtIHleMiArIHkqdCArIHheMiAtIHReMjs0MDA7NDAwOzA7MDsxOy0wLjM7MC4yODswLjAwMDA3OzUwMDs1OzEwO2ZhbHNl", // white starry explosion 
+    "eF4yIC0gdCAtIHgqdCArIHkgLSB4Knk7eCp5IC0geSp0IC0geCAtIHleMiArIHkqdCArIHheMiAtIHReMjs0MDA7NDAwOzA7MDsxOy0wLjM7MC4yODswLjAwMDA3OzUwMDs1OzEwO2ZhbHNl", // white starry explosion
+    "Y29zKC14XjIrMnheMi1lXnkqdCkrc2luKHkpO3NpbigteV4yK3gqeSkrY29zKHkpOzMwMDszMDA7MTAwOzEwMDsxOy0yOzQuNTswLjAwMTM7NjAwOzU7MDtmYWxzZQ", // (trig) bowl evolve to toilet
+    "Y29zKHReMiAtIHQgKyB4KnQpIC0gc2luKHReMiArIHgqeSArIHleMik7eCp5IHNpbigtIHgqdCArIHheMiAtIHkqdCAtIHgqeSkgKyBjb3MoeCk7MzAwOzMwMDsxMDA7MjAwOzE7MDs0OzAuMDAxOzYwMDs1OzEwO2ZhbHNl", // (trig) explosion into white shape rotation 
+    "LWNvcyh4KnkgKyB4XjIpIC0gY29zKHheMiArIHheMiAtIHQgLSB5KnQpO3Npbih5IC0geCAtIHReMiAtIHgqdCkgKyBzaW4oeCk7MjAwOzIwMDswOzA7MTstMy4yNTswOzAuMDAxOzUwMDs1Ozc7ZmFsc2U", // (trig) golden spin into line
+    "c2luKHheMiArIHReMikgLSB5ICsgdCA7Y29zKHkqdCAtIHgqeSkgKyB5KnQgKyB4OzMwMDszMDA7MTAwOzEwMDsxOy0xLjM1OzA7MC4wMDAyOzYwMDs1OzA7ZmFsc2U", // (trig) triple spinners
+    "c2luKHleMiArIHgqdCkgLSB5O2Nvcyh4XjIgLSB5KnQpICsgc2luKC0gdF4yKTsyMDA7MjAwOzA7MDsxOy0zOzIuMTswLjAwMTU7NTAwOzU7MDtmYWxzZQ", // (trig) back and forth evolution
+    "Y29zKHkqdCArIHgqeSArIHkpICsgc2luKHkqdCAtIHQpO3Npbih4KnkgLSB5XjIpICsgY29zKHReMiArIHkgLSB4ICsgeSp0ICsgeF4yKTsyMDA7MjAwOzA7MDsxOy0yOzI7MC4wMDA1OzUwMDs1OzExO2ZhbHNl", // (trig) dark fog spin 
+    "Y29zKHkpICsgeSp0ICsgc2luKHReMiAtIHleMik7eCp0IC0gc2luKHgqdCArIHQpICsgeCp5ICsgY29zKGUvdCk7MjAwOzIwMDswOzA7MTswLjE7MC42OzAuMDAwMTs1MDA7NTswO2ZhbHNl", // (trig) e jumper
+    "c2luKHheMiAtIHgqeSkgLSBjb3ModCk7Y29zKHgqdCArIHReMiArIHleMiArIHleMiAtIHReMiArIHkqdCAtIHheMik7NDAwOzQwMDswOzA7MTstMTsxLjU7MC4wMDA1NzU7NTAwOzU7MDtmYWxzZQ", // (trig) magic square become croissants
 ]
 
 window.presets = presets;
